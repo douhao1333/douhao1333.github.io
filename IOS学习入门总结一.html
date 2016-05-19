@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Keywords" content="blog"/>
+    <meta name="Description" content="blog"/>
+    <title>Simple</title>
+    <link rel="shortcut icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+    	<ul id="pages">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/tags">tags</a></li>
+            <li><a href="/#/archive">archive</a></li>
+    	</ul>
+    </div>
+	<div class="wrap-header">
+	<h1>
+    <a href="/" id="title"></a>
+	</h1>
+	</div>
+<div id="md" style="display: none;">
+<!-- markdown -->
+# 学习总结
+   跟着The iOS Apprentice的教程，我已经完成了两个简单的APP，学而不思则罔，在完成之后，把思考的感悟总结，可以对知识进行体系归纳
+## 1 关于property和synthesize
+###1.1 基本使用
+在.h文件中使用@property xxx来声明变量，这样当编译器看到这个声明时就会自动展开成getter和setter声明;同时需要在.m文件中加上@synthesize xxx (xxx要与property中的相同),这样会自动帮我们实现accessor方法
+
+看到@synthesize，会默认去访问与xxx同名的变量，如果找不到变量，会自动生成一个同名的私有变量，因此可以不用在.h中文件也可以不用书写xxx变量，但是如果支持其他类的访问，则需要 ；而在xcode4.5以后的版本中，也不需要使用@synthesize, xcode会自动帮助我们实现accessor方法
+
+###1.2 加入特性 
+@property(特性1,特性2)这种形式表明我希望属性具有怎样的行为，可以使用的特性有(readwrite、readonly | assign、retain、copy | nonatomic、atomic |strong、weak、unsafe_unretain)如果自己定义了setter或getter方法，就不能使用atomic，只能使用nonatomic特性
+
+atomic会防止多线程锁死的情况出现，但是会消耗一定的资源，而使用nonatomic则可以提高性能(不过一般台式机的速度已经够快了，所以一般是IOS开发中经常使用这个技术来来在资源有限的设备上获得更好的性能)，但是不应该在多线程中使用
+
+[具体特性的差别](http://justcoding.iteye.com/blog/1444548)
+
+##2 #include、#import、@class
+ #include "xxx.h" 的作用是拷贝头文件中的声明内容，但是如果使用两个一样#include时就会报错（因为拷贝了两份声明，会出现重复定义的错误）
+
+ #import "xxx.h" 就不会出现这样的错误，它会检查判断，如果已经导入了就不会再导入了
+
+@class xxx 的作用是告诉当前类它后面跟的xxx类已经定义了,但是不会去拷贝文件内容，它使用在两个类需要相互引用的时候，还有书写协议的时候(在头文件中使用了@class xxx，则在.m文件中实现时需要使用#import "xxx.h")
+
+##3 Storyboard使用segue的style选择
+segue的style有push、modal、custom三个选择
+
+push跳转是上一个界面是Naviagation Controller,是在navigation View Controller中下一级时使用的那种从右侧划入的方式
+
+modal跳转是最常用的，新的场景完全盖住旧的场景，除非关闭当前的场景，要不用户是无法与上一个场景交互，（它是标准的切换方式，可以有很多属性选择）
+
+custom是自定义的跳转方式
+<!-- markdown end -->
+</div>
+<div class="entry" id="main">
+<!-- content -->
+<h1 id="">学习总结</h1>
+
+<p>跟着The iOS Apprentice的教程，我已经完成了两个简单的APP，学而不思则罔，在完成之后，把思考的感悟总结，可以对知识进行体系归纳</p>
+
+<h2 id="1propertysynthesize">1 关于property和synthesize</h2>
+
+<h3 id="11">1.1 基本使用</h3>
+
+<p>在.h文件中使用@property xxx来声明变量，这样当编译器看到这个声明时就会自动展开成getter和setter声明;同时需要在.m文件中加上@synthesize xxx (xxx要与property中的相同),这样会自动帮我们实现accessor方法</p>
+
+<p>看到@synthesize，会默认去访问与xxx同名的变量，如果找不到变量，会自动生成一个同名的私有变量，因此可以不用在.h中文件也可以不用书写xxx变量，但是如果支持其他类的访问，则需要 ；而在xcode4.5以后的版本中，也不需要使用@synthesize, xcode会自动帮助我们实现accessor方法</p>
+
+<h3 id="12">1.2 加入特性</h3>
+
+<p>@property(特性1,特性2)这种形式表明我希望属性具有怎样的行为，可以使用的特性有(readwrite、readonly | assign、retain、copy | nonatomic、atomic |strong、weak、unsafe_unretain)如果自己定义了setter或getter方法，就不能使用atomic，只能使用nonatomic特性</p>
+
+<p>atomic会防止多线程锁死的情况出现，但是会消耗一定的资源，而使用nonatomic则可以提高性能(不过一般台式机的速度已经够快了，所以一般是IOS开发中经常使用这个技术来来在资源有限的设备上获得更好的性能)，但是不应该在多线程中使用</p>
+
+<p><a href="http://justcoding.iteye.com/blog/1444548">具体特性的差别</a></p>
+
+<h2 id="2includeimportclass">2 #include、#import、@class</h2>
+
+<p>#include "xxx.h" 的作用是拷贝头文件中的声明内容，但是如果使用两个一样#include时就会报错（因为拷贝了两份声明，会出现重复定义的错误）</p>
+
+<p>#import "xxx.h" 就不会出现这样的错误，它会检查判断，如果已经导入了就不会再导入了</p>
+
+<p>@class xxx 的作用是告诉当前类它后面跟的xxx类已经定义了,但是不会去拷贝文件内容，它使用在两个类需要相互引用的时候，还有书写协议的时候(在头文件中使用了@class xxx，则在.m文件中实现时需要使用#import "xxx.h")</p>
+
+<h2 id="3storyboardseguestyle">3 Storyboard使用segue的style选择</h2>
+
+<p>segue的style有push、modal、custom三个选择</p>
+
+<p>push跳转是上一个界面是Naviagation Controller,是在navigation View Controller中下一级时使用的那种从右侧划入的方式</p>
+
+<p>modal跳转是最常用的，新的场景完全盖住旧的场景，除非关闭当前的场景，要不用户是无法与上一个场景交互，（它是标准的切换方式，可以有很多属性选择）</p>
+
+<p>custom是自定义的跳转方式</p>
+<!-- content end -->
+</div>
+<br>
+<br>
+    <div id="disqus_thread"></div>
+	<div class="footer">
+		<p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
+	</div>
+</div>
+<script src="main.js"></script>
+<script id="content" type="text/mustache">
+    <h1>{{title}}</h1>
+    <div class="tag">
+    {{date}}
+    {{#tags}}
+    <a href="/#/tag/{{name}}">#{{name}}</a>
+    {{/tags}}
+    </div>
+</script>
+<script id="pagesTemplate" type="text/mustache">
+    {{#pages}}
+    <li>
+        <a href="{{path}}">{{title}}</a>
+    </li>
+    {{/pages}}
+</script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "main.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $("#title").html(data.name);
+            var pagesTemplate = Hogan.compile($("#pagesTemplate").html());
+            var pagesHtml = pagesTemplate.render({"pages": data.pages});
+            $("#pages").append(pagesHtml);
+            //path
+            var path = "IOS学习入门总结一.html";
+            //path end
+            var now = 0;
+            for (var i = 0; i < data.posts.length; ++i)
+                if (path == data.posts[i].path)
+                    now = i;
+            var post = data.posts[now];
+            var tmp = post.tags.split(" ");
+            var tags = [];
+            for (var i = 0; i < tmp.length; ++i)
+                if (tmp[i].length > 0)
+                    tags.push({"name": tmp[i]});
+            var contentTemplate = Hogan.compile($("#content").html());
+            var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
+            $("#main").prepend(contentHtml);
+            if (data.disqus_shortname.length > 0) {
+                var disqus_shortname = data.disqus_shortname;
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+    });
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ["\\(", "\\)"]], processEscapes: true}});
+</script>
+</body>
+</html>
