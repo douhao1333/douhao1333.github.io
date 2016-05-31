@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="Keywords" content="blog"/>
     <meta name="Description" content="blog"/>
-    <title>贺湘黔</title>
+    <title>Simple</title>
     <link rel="shortcut icon" href="/static/favicon.png"/>
     <link rel="stylesheet" type="text/css" href="/main.css" />
 </head>
@@ -55,6 +55,11 @@ push跳转是上一个界面是Naviagation Controller,是在navigation View Cont
 modal跳转是最常用的，新的场景完全盖住旧的场景，除非关闭当前的场景，要不用户是无法与上一个场景交互，（它是标准的切换方式，可以有很多属性选择）
 
 custom是自定义的跳转方式
+##4使用纯代码跳转
+第一个方法是通过- (void)presentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^)(void))completion跳转,多数情况都可以成功，有时候会失败，失败因为同一个视图控制器，同一时间，只能present另一个视图控制器，所以如果当前视图控制器已经present一个视图控制器，没用dismiss原来present的视图控制器，就再present新的视图控制器就会失败（控制器的两个只读属性：presentedViewController和presentingViewController，他们分别是被present的控制器和正在presenting的控制器。比如说， 控制器A和B，[A presentViewController B animated：YES completion：nil]; 那么A相对于B就是presentingViewController，B相对于A是presentedViewController，即这个时候 `B.presentingViewController = A;` `A.presentedViewController = B;`  
+这两个属性，在有些时候，用起来是很方便的。比如说，现在有个C界面，C界面被显示出来，可能有两种情况，一是modal出来的，另外一种是push出来的，这时候就可以通过当前界面对象的presentingViewController属性来判断到底属于哪种情况，如果是nil，表示是UINavigationController对象push过来的，如果不是则是modal过来的。）  
+第二种方法是通过 - (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender跳转  
+上面的两种方法都是通过dismissViewControllerAnimated 方法返回之前的界面
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
@@ -96,6 +101,13 @@ custom是自定义的跳转方式
 <p>modal跳转是最常用的，新的场景完全盖住旧的场景，除非关闭当前的场景，要不用户是无法与上一个场景交互，（它是标准的切换方式，可以有很多属性选择）</p>
 
 <p>custom是自定义的跳转方式</p>
+
+<h2 id="4">4使用纯代码跳转</h2>
+
+<p>第一个方法是通过- (void)presentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^)(void))completion跳转,多数情况都可以成功，有时候会失败，失败因为同一个视图控制器，同一时间，只能present另一个视图控制器，所以如果当前视图控制器已经present一个视图控制器，没用dismiss原来present的视图控制器，就再present新的视图控制器就会失败（控制器的两个只读属性：presentedViewController和presentingViewController，他们分别是被present的控制器和正在presenting的控制器。比如说， 控制器A和B，[A presentViewController B animated：YES completion：nil]; 那么A相对于B就是presentingViewController，B相对于A是presentedViewController，即这个时候 <code>B.presentingViewController = A;</code> <code>A.presentedViewController = B;</code> <br>
+这两个属性，在有些时候，用起来是很方便的。比如说，现在有个C界面，C界面被显示出来，可能有两种情况，一是modal出来的，另外一种是push出来的，这时候就可以通过当前界面对象的presentingViewController属性来判断到底属于哪种情况，如果是nil，表示是UINavigationController对象push过来的，如果不是则是modal过来的。） <br>
+第二种方法是通过 - (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender跳转 <br>
+上面的两种方法都是通过dismissViewControllerAnimated 方法返回之前的界面</p>
 <!-- content end -->
 </div>
 <br>
