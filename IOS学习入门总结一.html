@@ -61,6 +61,13 @@ custom是自定义的跳转方式
 第二种方法是通过 - (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender跳转  
 上面的两种方法都是通过dismissViewControllerAnimated 方法返回之前的界面
 
+##UIView animation
+可以实现的效果有  
+1.frame,bounds,center  
+2.alpha //改变透明度  
+3.backgroundColor //改变背景颜色  
+4.contentStretch //拉伸变化  
+5.transform //仿射变换，其中又包括Rotate，Invert，Translate，Scale（旋转，反转，位移，缩放）
 ##技巧汇总
 使用CALayer来设置边框效果时，除了设置`cornerRadius `属性，还需要设置`masksToBounds `为YES保证能该CALayer是根CALayer,使边框效果显示  
  不想要按钮的点击时的效果变化，就设置UIButtonde 这个歌属性`adjustsImageWhenHighlighted`为YES
@@ -116,6 +123,15 @@ custom是自定义的跳转方式
 这两个属性，在有些时候，用起来是很方便的。比如说，现在有个C界面，C界面被显示出来，可能有两种情况，一是modal出来的，另外一种是push出来的，这时候就可以通过当前界面对象的presentingViewController属性来判断到底属于哪种情况，如果是nil，表示是UINavigationController对象push过来的，如果不是则是modal过来的。） <br>
 第二种方法是通过 - (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender跳转 <br>
 上面的两种方法都是通过dismissViewControllerAnimated 方法返回之前的界面</p>
+
+<h2 id="uiviewanimation">UIView animation</h2>
+
+<p>可以实现的效果有 <br>
+1.frame,bounds,center <br>
+2.alpha //改变透明度 <br>
+3.backgroundColor //改变背景颜色 <br>
+4.contentStretch //拉伸变化 <br>
+5.transform //仿射变换，其中又包括Rotate，Invert，Translate，Scale（旋转，反转，位移，缩放）</p>
 
 <h2 id="">技巧汇总</h2>
 
