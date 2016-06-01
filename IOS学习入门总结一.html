@@ -60,9 +60,14 @@ custom是自定义的跳转方式
 这两个属性，在有些时候，用起来是很方便的。比如说，现在有个C界面，C界面被显示出来，可能有两种情况，一是modal出来的，另外一种是push出来的，这时候就可以通过当前界面对象的presentingViewController属性来判断到底属于哪种情况，如果是nil，表示是UINavigationController对象push过来的，如果不是则是modal过来的。）  
 第二种方法是通过 - (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender跳转  
 上面的两种方法都是通过dismissViewControllerAnimated 方法返回之前的界面
+
+##技巧汇总
+使用CALayer来设置边框效果时，除了设置`cornerRadius `属性，还需要设置`masksToBounds `为YES保证能该CALayer是根CALayer,使边框效果显示  
+ 不想要按钮的点击时的效果变化，就设置UIButtonde 这个歌属性`adjustsImageWhenHighlighted`为YES
 ***
 **第一次编辑于2016年5月19日**  
 **第二次编辑于2016年5月31日**
+**第二次编辑于2016年6月1日**
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
@@ -112,10 +117,16 @@ custom是自定义的跳转方式
 第二种方法是通过 - (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender跳转 <br>
 上面的两种方法都是通过dismissViewControllerAnimated 方法返回之前的界面</p>
 
+<h2 id="">技巧汇总</h2>
+
+<p>使用CALayer来设置边框效果时，除了设置<code>cornerRadius</code>属性，还需要设置<code>masksToBounds</code>为YES保证能该CALayer是根CALayer,使边框效果显示 <br>
+ 不想要按钮的点击时的效果变化，就设置UIButtonde 这个歌属性<code>adjustsImageWhenHighlighted</code>为YES</p>
+
 <hr>
 
 <p><strong>第一次编辑于2016年5月19日</strong> <br>
-<strong>第二次编辑于2016年5月31日</strong></p>
+<strong>第二次编辑于2016年5月31日</strong>
+<strong>第二次编辑于2016年6月1日</strong></p>
 <!-- content end -->
 </div>
 <br>
