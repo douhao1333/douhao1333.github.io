@@ -99,7 +99,7 @@ $(document).ready(function() {
         type: "GET",
         dataType: "json",
         success: function(data) {
-            $("#title").html(data.name);
+            $("#title").html("贺湘黔的博客");
             data.posts.sort(function(a, b){
                 if (a.date > b.date)
                     return -1;
