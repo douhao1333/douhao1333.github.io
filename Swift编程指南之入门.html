@@ -81,8 +81,15 @@
     `myVariable = 50`  
     `let myConstant = 42`  
 
-变量和常量在Swift中都是一种类型，但是你不用总是需要明确的把它们写出来。
+每一个变量和常量在Swift中都有一种类型，但是你不用总是需要明确的把类型写出来。当你创建一个变量或常量时也提供了值，会让编译器去推测它的类型。在上面的例子中，编译器推测`myVariable `是整数类型因为它初始化的值是一个整数。这被称为类型推断。一旦变量或常量有了一个类型，这个类型是不能被改变的。  
+如果初始化的值没有提供足够的信息（或者变量没有初始化的值），需要指定一个类型写在变量后面，用冒号和变量分隔开。  
+> ` let implicitInteger = 70`  
+`let implicitDouble = 70.0`  
+`let explicitDouble: Double = 70`  
 
+[]() 
+>**实验**  
+规范
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
@@ -174,7 +181,21 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
       <code>let myConstant = 42</code>  </p>
 </blockquote>
 
-<p>变量和常量在Swift中都是一种类型，但是你不用总是需要明确的把它们写出来。</p>
+<p>每一个变量和常量在Swift中都有一种类型，但是你不用总是需要明确的把类型写出来。当你创建一个变量或常量时也提供了值，会让编译器去推测它的类型。在上面的例子中，编译器推测<code>myVariable</code>是整数类型因为它初始化的值是一个整数。这被称为类型推断。一旦变量或常量有了一个类型，这个类型是不能被改变的。 <br>
+如果初始化的值没有提供足够的信息（或者变量没有初始化的值），需要指定一个类型写在变量后面，用冒号和变量分隔开。  </p>
+
+<blockquote>
+  <p><code>let implicitInteger = 70</code> <br>
+  <code>let implicitDouble = 70.0</code> <br>
+  <code>let explicitDouble: Double = 70</code>  </p>
+</blockquote>
+
+<p><a href=""></a> </p>
+
+<blockquote>
+  <p><strong>实验</strong> <br>
+  规范</p>
+</blockquote>
 <!-- content end -->
 </div>
 <br>
