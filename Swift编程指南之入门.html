@@ -83,13 +83,24 @@
 
 每一个变量和常量在Swift中都有一种类型，但是你不用总是需要明确的把类型写出来。当你创建一个变量或常量时也提供了值，会让编译器去推测它的类型。在上面的例子中，编译器推测`myVariable `是整数类型因为它初始化的值是一个整数。这被称为类型推断。一旦变量或常量有了一个类型，这个类型是不能被改变的。  
 如果初始化的值没有提供足够的信息（或者变量没有初始化的值），需要指定一个类型写在变量后面，用冒号和变量分隔开。  
-> ` let implicitInteger = 70`  
-`let implicitDouble = 70.0`  
-`let explicitDouble: Double = 70`  
+>  ` let implicitInteger = 70`  
+    `let implicitDouble = 70.0`  
+    `let explicitDouble: Double = 70`  
 
 []() 
 >**实验**  
-规范按住`Option`键去点击
+在Xcode中按住`Option`键去点击变量或常量的名字能看到它的推测类型。尝试去敲一下上面的常量相关的代码。  
+
+值从来不能隐式的转换为另一个类型。如果你需要转换一个值为一个不同的类型，就显示的把实例转换成所需要的类型。这里，展示了你怎么把`Int`类型转换成`String`类型。
+> ` let label = "The width is "`  
+   `let width = 94`  
+   `let widthLabel = label + String(width)`
+
+[]()
+>**实验**  
+尝试去移除最后一行里面转换为`String`类型的方法。你会得到什么错误？
+
+
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
@@ -186,15 +197,30 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
 
 <blockquote>
   <p><code>let implicitInteger = 70</code> <br>
-  <code>let implicitDouble = 70.0</code> <br>
-  <code>let explicitDouble: Double = 70</code>  </p>
+      <code>let implicitDouble = 70.0</code> <br>
+      <code>let explicitDouble: Double = 70</code>  </p>
 </blockquote>
 
 <p><a href=""></a> </p>
 
 <blockquote>
   <p><strong>实验</strong> <br>
-  规范按住<code>Option</code>键去点击</p>
+  在Xcode中按住<code>Option</code>键去点击变量或常量的名字能看到它的推测类型。尝试去敲一下上面的常量相关的代码。  </p>
+</blockquote>
+
+<p>值从来不能隐式的转换为另一个类型。如果你需要转换一个值为一个不同的类型，就显示的把实例转换成所需要的类型。这里，展示了你怎么把<code>Int</code>类型转换成<code>String</code>类型。</p>
+
+<blockquote>
+  <p><code>let label = "The width is "</code> <br>
+     <code>let width = 94</code> <br>
+     <code>let widthLabel = label + String(width)</code></p>
+</blockquote>
+
+<p><a href=""></a></p>
+
+<blockquote>
+  <p><strong>实验</strong> <br>
+  尝试去移除最后一行里面转换为<code>String</code>类型的方法。你会得到什么错误？</p>
 </blockquote>
 <!-- content end -->
 </div>
