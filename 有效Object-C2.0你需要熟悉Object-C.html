@@ -32,6 +32,17 @@
 Objective-C(之后简称OC)是把面向对象的特性引入到C中的一门全新语言。OC语言经常被描述为冗长的，因为它使用的方法名极其的长并且使用了很多方括号还有没有空隙。这个特性导致OC源代码可读性非常好但是对于使用C++或者Java语言开发的人员来说经常会感觉困难。
 编写OC语言代码能学得很快但是也有很多错综复杂的需要清楚知道的特性经常会被忽略了。同样的，有一些特性被滥用或者一知半解的，这样产生的代码的维护或者调试是很困难的。这一章节的内容涵盖了OC语言的基本要点；接下来的章节涵盖了OC语言的具体内容和相关的框架。
 ##第一节：你需要熟悉Object-C的根
+OC语言跟其他面向对象的语言比如C++和Java是相似的，但是也在很多方面有不同的。如果你有其他面向对象语言的使用经验，你将会理解许多用过的范式和模式。但是跟其他面向对象语言相比，OC语言的语法更多的接近外星语言，因为OC语言使用的是一种消息传递结构而不是方法回调。OC语言从一种使用消息来源方式的Smalltalk语言进化而来。消息传递和方法回调这两者的不同看起来像这样：  
+`//Messaging (Object-C)`  
+`Object *obj =new Object;`
+`[obj performWith:parameterl and:parameter2];`  
+    
+`//Function calling(C++)`  
+`Object *obj = new Object;`  
+`obj -> perform(parameterl, parameter2);`  
+这其中关键的不同点是消息
+
+
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
@@ -48,6 +59,16 @@ Objective-C(之后简称OC)是把面向对象的特性引入到C中的一门全�
 编写OC语言代码能学得很快但是也有很多错综复杂的需要清楚知道的特性经常会被忽略了。同样的，有一些特性被滥用或者一知半解的，这样产生的代码的维护或者调试是很困难的。这一章节的内容涵盖了OC语言的基本要点；接下来的章节涵盖了OC语言的具体内容和相关的框架。</p>
 
 <h2 id="objectc">第一节：你需要熟悉Object-C的根</h2>
+
+<p>OC语言跟其他面向对象的语言比如C++和Java是相似的，但是也在很多方面有不同的。如果你有其他面向对象语言的使用经验，你将会理解许多用过的范式和模式。但是跟其他面向对象语言相比，OC语言的语法更多的接近外星语言，因为OC语言使用的是一种消息传递结构而不是方法回调。OC语言从一种使用消息来源方式的Smalltalk语言进化而来。消息传递和方法回调这两者的不同看起来像这样： <br>
+<code>//Messaging (Object-C)</code> <br>
+<code>Object *obj =new Object;</code>
+<code>[obj performWith:parameterl and:parameter2];</code>  </p>
+
+<p><code>//Function calling(C++)</code> <br>
+<code>Object *obj = new Object;</code> <br>
+<code>obj -&gt; perform(parameterl, parameter2);</code> <br>
+这其中关键的不同点是消息</p>
 <!-- content end -->
 </div>
 <br>
