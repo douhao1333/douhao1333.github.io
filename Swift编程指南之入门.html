@@ -150,7 +150,37 @@
 > **实验**  
 把`number`改变成不同的整数(`integer`)值去看看对打印有什么影响。
 
+控制语句能在一个程序中被嵌套为复杂和有趣的语句。这有一个例子，是`if`语句和`else`分支语句被被嵌套在`for-in`语句(按照集合中元素的顺序，一个又一个的迭代元素)中  
+> `let individualScores = [75, 43, 103, 87, 12]`  
+   `var teamScore = 0`  
+   `for score in individualScores {`  
+   ` if score > 50 {`  
+       ` teamScore += 3`   
+   ` } else {`  
+        `teamScore += 1`  
+    `}`  
+ `}`  
+ `print(teamScore)`  
 
+在`if`语句中使用*可选绑定*去检查可选是否包含有值。
+> `var optionalName: String? = "John Appleseed"`  
+   `var greeting = "Hello!"`  
+   `if let name = optionalName {`  
+    `greeting = "Hello, \(name)"`  
+`}`
+
+[]() 
+> **实验**  
+把`optionalName`的值改为空(`nil`)。你会得到什么样的`getting`？增加一个如果`optionalName`是空的情况的`else`分支语句去设置不同的`getting`。  
+ 
+如果可选的值是空`nil`，这个条件是假(`false`)，那么括弧中的代码会被跳过。否则，这个可选值被解包然后被分配给在`let`之后的常量，使这个被解包的值可被代码块的里面获得的。  
+你可以使用一个单一的`if`语句去绑定多个值，一个`where`分支语句可以被增加为控制语句的更大范围的一种情况。在下面这个例子中，`if`语句的执行仅仅在它绑定的所有的值是正确的和所有的情况是相遇的。
+> `var optionalHello: String? = "Hello"`  
+   `if let hello = optionalHello where hello.hasPrefix("H"), let name =   optionalName {`  
+    `greeting = "\(hello), \(name)"`  
+`}`  
+
+开关语句在`swift`中是十分强大的。
 
 
 <!-- markdown end -->
@@ -353,6 +383,50 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
   <p><strong>实验</strong> <br>
   把<code>number</code>改变成不同的整数(<code>integer</code>)值去看看对打印有什么影响。</p>
 </blockquote>
+
+<p>控制语句能在一个程序中被嵌套为复杂和有趣的语句。这有一个例子，是<code>if</code>语句和<code>else</code>分支语句被被嵌套在<code>for-in</code>语句(按照集合中元素的顺序，一个又一个的迭代元素)中  </p>
+
+<blockquote>
+  <p><code>let individualScores = [75, 43, 103, 87, 12]</code> <br>
+     <code>var teamScore = 0</code> <br>
+     <code>for score in individualScores {</code> <br>
+     <code>if score &gt; 50 {</code> <br>
+         <code>teamScore += 3</code> <br>
+     <code>} else {</code> <br>
+          <code>teamScore += 1</code> <br>
+      <code>}</code> <br>
+   <code>}</code> <br>
+   <code>print(teamScore)</code>  </p>
+</blockquote>
+
+<p>在<code>if</code>语句中使用<em>可选绑定</em>去检查可选是否包含有值。</p>
+
+<blockquote>
+  <p><code>var optionalName: String? = "John Appleseed"</code> <br>
+     <code>var greeting = "Hello!"</code> <br>
+     <code>if let name = optionalName {</code> <br>
+      <code>greeting = "Hello, \(name)"</code> <br>
+  <code>}</code></p>
+</blockquote>
+
+<p><a href=""></a> </p>
+
+<blockquote>
+  <p><strong>实验</strong> <br>
+  把<code>optionalName</code>的值改为空(<code>nil</code>)。你会得到什么样的<code>getting</code>？增加一个如果<code>optionalName</code>是空的情况的<code>else</code>分支语句去设置不同的<code>getting</code>。  </p>
+</blockquote>
+
+<p>如果可选的值是空<code>nil</code>，这个条件是假(<code>false</code>)，那么括弧中的代码会被跳过。否则，这个可选值被解包然后被分配给在<code>let</code>之后的常量，使这个被解包的值可被代码块的里面获得的。 <br>
+你可以使用一个单一的<code>if</code>语句去绑定多个值，一个<code>where</code>分支语句可以被增加为控制语句的更大范围的一种情况。在下面这个例子中，<code>if</code>语句的执行仅仅在它绑定的所有的值是正确的和所有的情况是相遇的。</p>
+
+<blockquote>
+  <p><code>var optionalHello: String? = "Hello"</code> <br>
+     <code>if let hello = optionalHello where hello.hasPrefix("H"), let name =   optionalName {</code> <br>
+      <code>greeting = "\(hello), \(name)"</code> <br>
+  <code>}</code>  </p>
+</blockquote>
+
+<p>开关语句在<code>swift</code>中是十分强大的。</p>
 <!-- content end -->
 </div>
 <br>
