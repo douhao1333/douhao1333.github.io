@@ -180,7 +180,23 @@
     `greeting = "\(hello), \(name)"`  
 `}`  
 
-开关语句在`swift`中是十分强大的。
+开关语句在`swift`中是十分强大的。一个`switch`语句支持任何类型的数据和各种各样的比较判断，并不会限制数据的类型为整数和限制相等的语句。这下面这个例子中，这个`switch`语句传入的变量`vegetable`的值是字符串，然后与`switch`语句的每个`case`的值进行匹配，最后执行匹配成功的那个`case`。
+> `let vegetable = "red pepper"`  
+`switch vegetable {`  
+`case "celery":`  
+    `let vegetableComment = "Add some raisins and make ants on a log."`  
+`case "cucumber", "watercress":`  
+   `let vegetableComment = "That would make a good tea sandwich."`  
+`case let x where x.hasSuffix("pepper"):`  
+    `let vegetableComment = "Is it a spicy \(x)?"`  
+`default:`  
+    `let vegetableComment = "Everything tastes good in soup."`  
+}`    
+
+[]() 
+> **实验**  
+尝试移除`default`情况。你会得到什么错误？  
+
 
 
 <!-- markdown end -->
@@ -426,7 +442,28 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
   <code>}</code>  </p>
 </blockquote>
 
-<p>开关语句在<code>swift</code>中是十分强大的。</p>
+<p>开关语句在<code>swift</code>中是十分强大的。一个<code>switch</code>语句支持任何类型的数据和各种各样的比较判断，并不会限制数据的类型为整数和限制相等的语句。这下面这个例子中，这个<code>switch</code>语句传入的变量<code>vegetable</code>的值是字符串，然后与<code>switch</code>语句的每个<code>case</code>的值进行匹配，最后执行匹配成功的那个<code>case</code>。</p>
+
+<blockquote>
+  <p><code>let vegetable = "red pepper"</code> <br>
+  <code>switch vegetable {</code> <br>
+  <code>case "celery":</code> <br>
+      <code>let vegetableComment = "Add some raisins and make ants on a log."</code> <br>
+  <code>case "cucumber", "watercress":</code> <br>
+     <code>let vegetableComment = "That would make a good tea sandwich."</code> <br>
+  <code>case let x where x.hasSuffix("pepper"):</code> <br>
+      <code>let vegetableComment = "Is it a spicy \(x)?"</code> <br>
+  <code>default:</code> <br>
+      <code>let vegetableComment = "Everything tastes good in soup."</code> <br>
+  }`    </p>
+</blockquote>
+
+<p><a href=""></a> </p>
+
+<blockquote>
+  <p><strong>实验</strong> <br>
+  尝试移除<code>default</code>情况。你会得到什么错误？  </p>
+</blockquote>
 <!-- content end -->
 </div>
 <br>
