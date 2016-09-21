@@ -232,6 +232,19 @@ greet("Bob", day: "Friday")
 greet("Charlie", day: "a nice day")`
 
 
+函数定义中在一个特定类型中被叫做方法(`method`)。方法被定义在类型中，跟类型有着明确地联系，仅仅能被类型调用(或者一个子类，一会你会学习到子类相关的)。在前面的`switch`语句的例子中，你看到一个叫`hasSuffix()`的方法被定义在`String`类型中，这里再次展示了它的使用:
+>`let exampleString = "hello"  
+if exampleString.hasSuffix("lo")  {  
+print("ends in lo")  
+}`
+
+就像你看到的，你可以使用这个点语法调用方法。当你调用一个方法，你传递第一个实参不需要写它的名字，而之后的每一个实参都要带着它的名字。例如，在`Array`类型中的这个方法带了两个形参，你仅仅在传递第二个实参的时候带着它的名字：
+>`var array = ["apple", "banana", "dragonfruit"]  
+array.insert("cherry", atIndex: 2)  
+array`
+
+###类和初始化
+
 
 
 
@@ -550,6 +563,25 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
   greet("Bob", day: "Friday") <br>
   greet("Charlie", day: "a nice day")</code></p>
 </blockquote>
+
+<p>函数定义中在一个特定类型中被叫做方法(<code>method</code>)。方法被定义在类型中，跟类型有着明确地联系，仅仅能被类型调用(或者一个子类，一会你会学习到子类相关的)。在前面的<code>switch</code>语句的例子中，你看到一个叫<code>hasSuffix()</code>的方法被定义在<code>String</code>类型中，这里再次展示了它的使用:</p>
+
+<blockquote>
+  <p><code>let exampleString = "hello" <br>
+  if exampleString.hasSuffix("lo")  { <br>
+  print("ends in lo") <br>
+  }</code></p>
+</blockquote>
+
+<p>就像你看到的，你可以使用这个点语法调用方法。当你调用一个方法，你传递第一个实参不需要写它的名字，而之后的每一个实参都要带着它的名字。例如，在<code>Array</code>类型中的这个方法带了两个形参，你仅仅在传递第二个实参的时候带着它的名字：</p>
+
+<blockquote>
+  <p><code>var array = ["apple", "banana", "dragonfruit"] <br>
+  array.insert("cherry", atIndex: 2) <br>
+  array</code></p>
+</blockquote>
+
+<h3 id="">类和初始化</h3>
 <!-- content end -->
 </div>
 <br>
