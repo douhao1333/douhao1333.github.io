@@ -253,6 +253,14 @@ func simpleDescription() -> String{
 }`
 
 
+通过把括号放在类名之后去创建一个类的实例——对象。使用点语法获取这个实例的属性和方法。这里，`shape`是一个对象是`Shape`类的一个实例。
+>`var shape = Shape()  
+shape.simpleDescription = 7  
+var shapeDescription = shape.simpleDescription()  `
+
+
+这个`Shape`类遗漏一些重要的事：初始化(initializer)。初始化是一个准备一个类的一个实例去使用的方法，
+
 
 
 
@@ -602,6 +610,16 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
    return "A shape with \() sides." <br>
   }</code></p>
 </blockquote>
+
+<p>通过把括号放在类名之后去创建一个类的实例——对象。使用点语法获取这个实例的属性和方法。这里，<code>shape</code>是一个对象是<code>Shape</code>类的一个实例。</p>
+
+<blockquote>
+  <p><code>var shape = Shape() <br>
+  shape.simpleDescription = 7 <br>
+  var shapeDescription = shape.simpleDescription()</code></p>
+</blockquote>
+
+<p>这个<code>Shape</code>类遗漏一些重要的事：初始化(initializer)。初始化是一个准备一个类的一个实例去使用的方法，</p>
 <!-- content end -->
 </div>
 <br>
