@@ -215,7 +215,6 @@ print(firstForLoop) `
 }  
 print(secondForLoop)`
 
-
 这个循环区间从`0`到`4`总的有5个循环迭代。这个`_`下划线代表是一个通配符,当你不需要知道当前正在执行的循环怎么迭代的时候你可以使用这个通配符 。
 
 ### 函数和方法
@@ -225,12 +224,10 @@ print(secondForLoop)`
 return "Hello \(name), today is \(day)."  
 }`  
 
-
 调用一个函数通过它的名字和在括号里面的实参列表(传递的值的类型必须和函数的形参的类型符合)。当你调用一个函数，你传递的第一个实参的值不用写它的名字，而之后传递的实参的值要带着它的名字。
 >`greet("Anna", day: "Thesday")  
 greet("Bob", day: "Friday")  
 greet("Charlie", day: "a nice day")`
-
 
 函数定义中在一个特定类型中被叫做方法(`method`)。方法被定义在类型中，跟类型有着明确地联系，仅仅能被类型调用(或者一个子类，一会你会学习到子类相关的)。在前面的`switch`语句的例子中，你看到一个叫`hasSuffix()`的方法被定义在`String`类型中，这里再次展示了它的使用:
 >`let exampleString = "hello"  
@@ -252,15 +249,22 @@ func simpleDescription() -> String{
  return "A shape with \() sides."  
 }`
 
-
 通过把括号放在类名之后去创建一个类的实例——对象。使用点语法获取这个实例的属性和方法。这里，`shape`是一个对象是`Shape`类的一个实例。
 >`var shape = Shape()  
 shape.simpleDescription = 7  
 var shapeDescription = shape.simpleDescription()  `
 
-
 这个`Shape`类遗漏一些重要的事：初始化(initializer)。初始化是一个准备一个类的一个实例去使用的方法，它涉及设置每个属性的初始化值和执行一些其他的建立。使用`init`去创建一个初始化方法。这个例子定义了一个新的类，`NamedShape`，这个有一个初始化含有一个形参`name`。
-
+>`class NamedShape  {
+var numberOfSides  = 0  
+var name:String      
+init(name:String){  
+self.name = name  
+}
+func simpleDescription() -> String {  
+return "A shape with \(numberOfSides ) sides.  
+}  
+}"`
 
 
 
@@ -620,6 +624,19 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
 </blockquote>
 
 <p>这个<code>Shape</code>类遗漏一些重要的事：初始化(initializer)。初始化是一个准备一个类的一个实例去使用的方法，它涉及设置每个属性的初始化值和执行一些其他的建立。使用<code>init</code>去创建一个初始化方法。这个例子定义了一个新的类，<code>NamedShape</code>，这个有一个初始化含有一个形参<code>name</code>。</p>
+
+<blockquote>
+  <p><code>class NamedShape  {
+  var numberOfSides  = 0 <br>
+  var name:String <br>
+  init(name:String){ <br>
+  self.name = name <br>
+  }
+  func simpleDescription() -&gt; String { <br>
+  return "A shape with \(numberOfSides ) sides. <br>
+  } <br>
+  }"</code></p>
+</blockquote>
 <!-- content end -->
 </div>
 <br>
