@@ -240,7 +240,7 @@ print("ends in lo")
 array.insert("cherry", atIndex: 2)  
 array`
 
-###类和初始化
+###类和构造器
 在面向对象程序中，这个程序的行为是大部分是基于两个对象间的相互作用。一个对象是一个类的实例，实例被认为做是对象的一个蓝图。类以属性的形式存储关于他们自己的额外的信息并且用方法定义它们的行为。  
 使用跟在`class`之后的类名去定义一个类。在类里面有一个属性声明，除了在类中的上下文之外都可以使用一样的方式可以写常量或变量声明。同样，方法和函数的声明是同样的写法。这个例子声明了一个`Shape`类含有一个`numberOfSides`属性和一个`simpleDescription`方法。
 >`calss Shape {  
@@ -254,7 +254,7 @@ func simpleDescription() -> String{
 shape.simpleDescription = 7  
 var shapeDescription = shape.simpleDescription()  `
 
-这个`Shape`类遗漏一些重要的事：初始化(initializer)。初始化是一个准备一个类的一个实例去使用的方法，它涉及设置每个属性的初始化值和执行一些其他的建立。使用`init`去创建一个初始化方法。这个例子定义了一个新的类，`NamedShape`，这个有一个初始化含有一个形参`name`。
+这个`Shape`类遗漏一些重要的事：一个构造器(initializer)。构造器是一个准备一个类的一个实例去使用的方法，它涉及设置每个属性的初始化值和执行一些其他的建立。使用`init`去创建一个初始化方法。这个例子定义了一个新的类，`NamedShape`，这个有一个构造器含有一个形参`name`。
 >`class NamedShape  {
 var numberOfSides  = 0  
 var name:String      
@@ -266,8 +266,8 @@ return "A shape with \(numberOfSides ) sides.
 }  
 }"`
 
-这里面指出怎么使用`self`去区分属性`name`和来自参数的`name`去初始化。每个属性都需要值分配——不管是在声明的时候(就像`numberOfSides `)或者是在初始化的时候(就像`name`)。  
-你不能通过写`init`来调用初始化方法；你可以通过在类名之后接上括号，在括号里放入适当的参数来调用初始化方法。当你调用初始化方法的时候，你你需要包含所有的参数名和它们对应的值。  
+这里面指出在构造器中怎么使用`self`去区分属性`name`和来自参数的`name`。每个属性都需要值分配——不管是在声明的时候(就像`numberOfSides `)或者是在构造器里面(就像`name`)。  
+你不能通过写`init`来调用构造器；你可以通过在类名之后接上括号，在括号里放入适当的参数来调用构造器。当你调用构造器的时候，你你需要包含所有的参数名和它们对应的值。  
 >`let nameShape = NamedShape(name: " mynamed shape")`  
 
 类继承它们父类的行为。一个类从别的类继承行为这个类被称为子类，父类被称为超类。子类通过冒号分隔在它们的类名之后的它们的父类的类名。一个类仅仅能从一个父类继承，尽管这个父类可以从另一个相对于它的父类继承等等，结果就是产生了类的层次(`a class hierarchy`)。  
@@ -292,11 +292,13 @@ let testSquare = Square(sideLength: 5.2, name: "my test square")
 testSquare.area()   
 testSquare.simpleDescription() `
 
-指出这个`Square`类初始化有三个不同的步骤：  
+指出这个`Square`类的构造器有三个不同的步骤：  
 
 * 1.设置`Square`子类声明的属性的值。
-* 2.调用`NamedShare`父类的初始化方法。
+* 2.调用`NamedShare`父类的构造器。
 * 3.改变在`NamedShare`父类中定义的属性的值。一些额外的步骤工作有使用方法，获取属性方法或者属性方法也在这一步实现。  
+
+有时候，初始化一个对象需要去做失败处理，例如当供给参数的值是超过参数的某些范围得时候，或者当预期的数据却是遗漏的时候。可能无法成功构造对象的构造器被叫做可失败构造器(failable initializers)。一个可失败构造器在初始化后返回空(`nil`)。使用`init?`声明一个可失败构造器。
 
 
 
@@ -637,7 +639,7 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
   array</code></p>
 </blockquote>
 
-<h3 id="">类和初始化</h3>
+<h3 id="">类和构造器</h3>
 
 <p>在面向对象程序中，这个程序的行为是大部分是基于两个对象间的相互作用。一个对象是一个类的实例，实例被认为做是对象的一个蓝图。类以属性的形式存储关于他们自己的额外的信息并且用方法定义它们的行为。 <br>
 使用跟在<code>class</code>之后的类名去定义一个类。在类里面有一个属性声明，除了在类中的上下文之外都可以使用一样的方式可以写常量或变量声明。同样，方法和函数的声明是同样的写法。这个例子声明了一个<code>Shape</code>类含有一个<code>numberOfSides</code>属性和一个<code>simpleDescription</code>方法。</p>
@@ -658,7 +660,7 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
   var shapeDescription = shape.simpleDescription()</code></p>
 </blockquote>
 
-<p>这个<code>Shape</code>类遗漏一些重要的事：初始化(initializer)。初始化是一个准备一个类的一个实例去使用的方法，它涉及设置每个属性的初始化值和执行一些其他的建立。使用<code>init</code>去创建一个初始化方法。这个例子定义了一个新的类，<code>NamedShape</code>，这个有一个初始化含有一个形参<code>name</code>。</p>
+<p>这个<code>Shape</code>类遗漏一些重要的事：一个构造器(initializer)。构造器是一个准备一个类的一个实例去使用的方法，它涉及设置每个属性的初始化值和执行一些其他的建立。使用<code>init</code>去创建一个初始化方法。这个例子定义了一个新的类，<code>NamedShape</code>，这个有一个构造器含有一个形参<code>name</code>。</p>
 
 <blockquote>
   <p><code>class NamedShape  {
@@ -673,8 +675,8 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
   }"</code></p>
 </blockquote>
 
-<p>这里面指出怎么使用<code>self</code>去区分属性<code>name</code>和来自参数的<code>name</code>去初始化。每个属性都需要值分配——不管是在声明的时候(就像<code>numberOfSides</code>)或者是在初始化的时候(就像<code>name</code>)。 <br>
-你不能通过写<code>init</code>来调用初始化方法；你可以通过在类名之后接上括号，在括号里放入适当的参数来调用初始化方法。当你调用初始化方法的时候，你你需要包含所有的参数名和它们对应的值。  </p>
+<p>这里面指出在构造器中怎么使用<code>self</code>去区分属性<code>name</code>和来自参数的<code>name</code>。每个属性都需要值分配——不管是在声明的时候(就像<code>numberOfSides</code>)或者是在构造器里面(就像<code>name</code>)。 <br>
+你不能通过写<code>init</code>来调用构造器；你可以通过在类名之后接上括号，在括号里放入适当的参数来调用构造器。当你调用构造器的时候，你你需要包含所有的参数名和它们对应的值。  </p>
 
 <blockquote>
   <p><code>let nameShape = NamedShape(name: " mynamed shape")</code>  </p>
@@ -705,13 +707,15 @@ let testSquare = Square(sideLength: 5.2, name: "my test square") <br>
 testSquare.area() <br>
 testSquare.simpleDescription() `</p>
 
-<p>指出这个<code>Square</code>类初始化有三个不同的步骤：  </p>
+<p>指出这个<code>Square</code>类的构造器有三个不同的步骤：  </p>
 
 <ul>
 <li>1.设置<code>Square</code>子类声明的属性的值。</li>
-<li>2.调用<code>NamedShare</code>父类的初始化方法。</li>
+<li>2.调用<code>NamedShare</code>父类的构造器。</li>
 <li>3.改变在<code>NamedShare</code>父类中定义的属性的值。一些额外的步骤工作有使用方法，获取属性方法或者属性方法也在这一步实现。  </li>
 </ul>
+
+<p>有时候，初始化一个对象需要去做失败处理，例如当供给参数的值是超过参数的某些范围得时候，或者当预期的数据却是遗漏的时候。可能无法成功构造对象的构造器被叫做可失败构造器(failable initializers)。一个可失败构造器在初始化后返回空(<code>nil</code>)。使用<code>init?</code>声明一个可失败构造器。</p>
 <!-- content end -->
 </div>
 <br>
