@@ -298,7 +298,54 @@ testSquare.simpleDescription() `
 * 2.调用`NamedShare`父类的构造器。
 * 3.改变在`NamedShare`父类中定义的属性的值。一些额外的步骤工作有使用方法，获取属性方法或者属性方法也在这一步实现。  
 
+有时候，初始化一个对象需要去做失败处理，例如当供给参数的值是超过参数的某些范围得时候，或者当预期的数据却是遗漏的时候。可能无法成功构造对象的构造器被叫做可失败构造器(failable initializers)。一个可失败构造器在初始化后返回空(`nil`)。使用`init?`声明一个可失败构造器。  
+>`class Square: NamedShare {  
+var sideLength:Double  
+init(sideLength:Double, name:String) {  
+self.sideLength = sideLength  
+super.init(name: name)  
+numberOfSides = 4  
+}  
+func area() -> Double {  
+return sideLength * sideLength  
+}  
+override func simpleDescription() -> String {  
+return "A square with sides of lenth \(sideLength )."  
+
+}  
+}  
+let testSquare = Square(sideLength: 5.2, name: "my test square")  
+testSquare.area()   
+testSquare.simpleDescription() `
+
+指出这个`Square`类的构造器有三个不同的步骤：  
+
+* 1.设置`Square`子类声明的属性的值。
+* 2.调用`NamedShare`父类的构造器。
+* 3.改变在`NamedShare`父类中定义的属性的值。一些额外的步骤工作有使用方法，获取属性方法或者属性方法也在这一步实现。  
+
 有时候，初始化一个对象需要去做失败处理，例如当供给参数的值是超过参数的某些范围得时候，或者当预期的数据却是遗漏的时候。可能无法成功构造对象的构造器被叫做可失败构造器(failable initializers)。一个可失败构造器在初始化后返回空(`nil`)。使用`init?`声明一个可失败构造器。
+
+>`
+class Circle: NamedShape {  
+    var radius: Double  
+    init?(radius: Double, name: String) {  
+      self.radius = radius   
+      super.init(name: name)  
+      numberOfSides = 1  
+      if radius <= 0 {  
+          return nil  
+      }   
+  }  
+  override func simpleDescription() -> String {  
+     return "Acircle with  a radius of \(radius)."  
+  }  
+}  
+let successfulCircle = Circle (radius: 4.2, name:"successful circle")  
+let failedCircle = Circle(radius: -7, name:"failed circle")  `  
+
+初始化还可以有许多与它相关连的关键字。一个`特定的初始化`不需要任何关键字。
+
 
 
 
@@ -715,7 +762,60 @@ testSquare.simpleDescription() `</p>
 <li>3.改变在<code>NamedShare</code>父类中定义的属性的值。一些额外的步骤工作有使用方法，获取属性方法或者属性方法也在这一步实现。  </li>
 </ul>
 
+<p>有时候，初始化一个对象需要去做失败处理，例如当供给参数的值是超过参数的某些范围得时候，或者当预期的数据却是遗漏的时候。可能无法成功构造对象的构造器被叫做可失败构造器(failable initializers)。一个可失败构造器在初始化后返回空(<code>nil</code>)。使用<code>init?</code>声明一个可失败构造器。  </p>
+
+<blockquote>
+  <p>`class Square: NamedShare { <br>
+  var sideLength:Double <br>
+  init(sideLength:Double, name:String) { <br>
+  self.sideLength = sideLength <br>
+  super.init(name: name) <br>
+  numberOfSides = 4 <br>
+  } <br>
+  func area() -&gt; Double { <br>
+  return sideLength * sideLength <br>
+  } <br>
+  override func simpleDescription() -&gt; String { <br>
+  return "A square with sides of lenth (sideLength )."  </p>
+</blockquote>
+
+<p>} <br>
+} <br>
+let testSquare = Square(sideLength: 5.2, name: "my test square") <br>
+testSquare.area() <br>
+testSquare.simpleDescription() `</p>
+
+<p>指出这个<code>Square</code>类的构造器有三个不同的步骤：  </p>
+
+<ul>
+<li>1.设置<code>Square</code>子类声明的属性的值。</li>
+<li>2.调用<code>NamedShare</code>父类的构造器。</li>
+<li>3.改变在<code>NamedShare</code>父类中定义的属性的值。一些额外的步骤工作有使用方法，获取属性方法或者属性方法也在这一步实现。  </li>
+</ul>
+
 <p>有时候，初始化一个对象需要去做失败处理，例如当供给参数的值是超过参数的某些范围得时候，或者当预期的数据却是遗漏的时候。可能无法成功构造对象的构造器被叫做可失败构造器(failable initializers)。一个可失败构造器在初始化后返回空(<code>nil</code>)。使用<code>init?</code>声明一个可失败构造器。</p>
+
+<blockquote>
+  <p><code>
+  class Circle: NamedShape { <br>
+      var radius: Double <br>
+      init?(radius: Double, name: String) { <br>
+        self.radius = radius <br>
+        super.init(name: name) <br>
+        numberOfSides = 1 <br>
+        if radius &lt;= 0 { <br>
+            return nil <br>
+        } <br>
+    } <br>
+    override func simpleDescription() -&gt; String { <br>
+       return "Acircle with  a radius of \(radius)." <br>
+    } <br>
+  } <br>
+  let successfulCircle = Circle (radius: 4.2, name:"successful circle") <br>
+  let failedCircle = Circle(radius: -7, name:"failed circle")</code>  </p>
+</blockquote>
+
+<p>初始化还可以有许多与它相关连的关键字。一个<code>特定的初始化</code>不需要任何关键字。</p>
 <!-- content end -->
 </div>
 <br>
