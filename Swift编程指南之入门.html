@@ -71,6 +71,45 @@
 * 使用`助理编辑预览模式(Assistant editor’s Preview mode)`去预览`故事板(storyboard)UI`
 * 使用`自动布局(Auto Layout)`去安排`UI`自动地适应用户的设备尺寸
 
+###创建新工程
+Xcode含有一些内置的应用模板用于开发相同类型的IOS应用，类型例如游戏，带导航的基本面板的应用，和带列表的基本视图的应用等。这些模板大多数都带有预先设定好的接口和资源代码文件。对于这个教程，你将从最基本的模板：`单视图应用模板(Single View Application)`开始使用。</br>
+   
+ `去创建一个新工程`  
+1.从电脑的`应用程序(/Applications)`目录打开Xcode。  
+如果这是你第一次启动Xcode程序，它可能会请求你去同意用户协议和去下载额外的组件。跟随电脑屏幕上的提示操作直到设置完整然后真正的启动。  
+等一会Xcode启动，这个欢迎窗口出现。
+#![](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_welcomewindow_2x.png)
+</br>
+如果一个工程窗口代替了这个欢迎界面，不要担心——你可能之前在Xcode创建过或者打开过一个工程。  
+2.在欢迎窗口，点击创建`Create a new Xcode project`(或者选择File > New > Project).Xcode会打开一个新窗口和一个对话框让你选择一个模板。  
+3.选择在对话框顶部的`iOS`。  
+4.在对话框的`Application`区域，选择`Single View Application`然后点击`Next`。
+#![](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_singleviewapp_template_2x.png) 
+</br>
+5.在下面这个对话框出现后，使用下面的那个名字为你的应用命名并且为你的工程选择一些额外的选项：  
+
+* Product Name: FoodTracker  
+Xcode使用你输入的产品名称去命名你的项目和应用。  
+* Team:如果没有自动填充，设置它为`None`。  
+* Organization Name:你的组织的名字或者你拥有的名字。你可以留空白。  
+* Organization Identifier:如果你有你的组织的标识符，你就使用它。如果你没有，使用`com.example`。
+* Bundle Identifier:这个值基于你的`Product Name`和`Organization Identifier`自动生成。
+* Language: Swift
+* Devices: Universal  
+一个`Universal`类型的应用可以运行在`iPhone`和`iPad`设备上面。
+* Use Core Data:不用选择。
+* Include Unit Tests:选择。
+* Include UI Tests: 不用选择。
+#![](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_newproject_2x.png) 
+</br>
+6.点击下一步  
+7.在出现的对话框中，选择一个存放你的项目的本地路径然后点击`创建(Create)`.  
+</br>
+Xcode会在[工作区间窗口(workspace window)](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW9)打开你新创建的项目
+
+![](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_workspacewindow_2x.png)
+
+
 
 
 
@@ -156,6 +195,53 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
 <li>使用<code>助理编辑预览模式(Assistant editor’s Preview mode)</code>去预览<code>故事板(storyboard)UI</code></li>
 <li>使用<code>自动布局(Auto Layout)</code>去安排<code>UI</code>自动地适应用户的设备尺寸</li>
 </ul>
+
+<h3 id="">创建新工程</h3>
+
+<p>Xcode含有一些内置的应用模板用于开发相同类型的IOS应用，类型例如游戏，带导航的基本面板的应用，和带列表的基本视图的应用等。这些模板大多数都带有预先设定好的接口和资源代码文件。对于这个教程，你将从最基本的模板：<code>单视图应用模板(Single View Application)</code>开始使用。<br></p>
+
+<p><code>去创建一个新工程</code> <br>
+1.从电脑的<code>应用程序(/Applications)</code>目录打开Xcode。 <br>
+如果这是你第一次启动Xcode程序，它可能会请求你去同意用户协议和去下载额外的组件。跟随电脑屏幕上的提示操作直到设置完整然后真正的启动。 <br>
+等一会Xcode启动，这个欢迎窗口出现。</p>
+
+<h1 id="httpsdeveloperapplecomlibrarycontentreferencelibrarygettingstarteddevelopiosappsswiftartbbui_welcomewindow_2xpng"><img src="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_welcomewindow_2x.png" alt="" title=""></h1>
+
+<p><br>
+如果一个工程窗口代替了这个欢迎界面，不要担心——你可能之前在Xcode创建过或者打开过一个工程。 <br>
+2.在欢迎窗口，点击创建<code>Create a new Xcode project</code>(或者选择File &gt; New &gt; Project).Xcode会打开一个新窗口和一个对话框让你选择一个模板。 <br>
+3.选择在对话框顶部的<code>iOS</code>。 <br>
+4.在对话框的<code>Application</code>区域，选择<code>Single View Application</code>然后点击<code>Next</code>。</p>
+
+<h1 id="httpsdeveloperapplecomlibrarycontentreferencelibrarygettingstarteddevelopiosappsswiftartbbui_singleviewapp_template_2xpng"><img src="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_singleviewapp_template_2x.png" alt="" title=""></h1>
+
+<p><br>
+5.在下面这个对话框出现后，使用下面的那个名字为你的应用命名并且为你的工程选择一些额外的选项：  </p>
+
+<ul>
+<li>Product Name: FoodTracker <br>
+Xcode使用你输入的产品名称去命名你的项目和应用。  </li>
+<li>Team:如果没有自动填充，设置它为<code>None</code>。  </li>
+<li>Organization Name:你的组织的名字或者你拥有的名字。你可以留空白。  </li>
+<li>Organization Identifier:如果你有你的组织的标识符，你就使用它。如果你没有，使用<code>com.example</code>。</li>
+<li>Bundle Identifier:这个值基于你的<code>Product Name</code>和<code>Organization Identifier</code>自动生成。</li>
+<li>Language: Swift</li>
+<li>Devices: Universal <br>
+一个<code>Universal</code>类型的应用可以运行在<code>iPhone</code>和<code>iPad</code>设备上面。</li>
+<li>Use Core Data:不用选择。</li>
+<li>Include Unit Tests:选择。</li>
+<li>Include UI Tests: 不用选择。</li>
+</ul>
+
+<h1 id="httpsdeveloperapplecomlibrarycontentreferencelibrarygettingstarteddevelopiosappsswiftartbbui_newproject_2xpng"><img src="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_newproject_2x.png" alt="" title=""></h1>
+
+<p><br>
+6.点击下一步 <br>
+7.在出现的对话框中，选择一个存放你的项目的本地路径然后点击<code>创建(Create)</code>. <br>
+<br>
+Xcode会在<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW9">工作区间窗口(workspace window)</a>打开你新创建的项目</p>
+
+<p><img src="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_workspacewindow_2x.png" alt="" title=""></p>
 <!-- content end -->
 </div>
 <br>
