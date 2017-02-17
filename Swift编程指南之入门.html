@@ -74,7 +74,7 @@
 ###创建新工程
 Xcode含有一些内置的应用模板用于开发相同类型的IOS应用，类型例如游戏，带导航的基本面板的应用，和带列表的基本视图的应用等。这些模板大多数都带有预先设定好的接口和资源代码文件。对于这个教程，你将从最基本的模板：`单视图应用模板(Single View Application)`开始使用。</br>
    
- `去创建一个新工程`  
+ **去创建一个新工程**  
 1.从电脑的`应用程序(/Applications)`目录打开Xcode。  
 如果这是你第一次启动Xcode程序，它可能会请求你去同意用户协议和去下载额外的组件。跟随电脑屏幕上的提示操作直到设置完整然后真正的启动。  
 等一会Xcode启动，这个欢迎窗口出现。
@@ -113,7 +113,35 @@ Xcode会在[工作区间窗口(workspace window)](https://developer.apple.com/li
 >**扩展**  
 在你的应用运行在iOS设备上之前，你需要设置一个有效的团队。如果你是苹果开发商计划的一个会员的组织或个人。你在这可以选择一个团队。否则你只能通过你的苹果ID被分配一个个人的团队然后使用它将你的应用运行在设备上。但是，在你将你的应用提交到苹果的应用商店之前你必须加入苹果开发商。更多信息，点击电脑的`Help > Xcode Help 然后搜索“Signing workflow.”`
 
+###熟悉Xcode
+Xcode包括你创建一个应用需要的所有东西。它组织了创建应用程序所需的所有文件和资源。它提供给你编辑你的代码和用户接口的功能。而且，Xcode可以让你编译、运行和调试你的应用程序——为iOS设备提供模拟器和一个强大的集成调试器。花一些时间让你自己去熟悉Xcode工作区间的主要区域。在接下来的整个教程中你会使用在窗口中的标示区域。不要被所有的碎片淹没；当你需要使用每个区域的时候都会有更详细的信息描述。
+#![](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_workspacewindow_callouts_2x.png)
+</br>
 
+##运行iOS虚拟器
+因为你的应用程序是基于Xcode模板创建的，这个基本的应用程序的环境已经自动帮你配置好了。尽管你不写任何代码，也没有任何额外的配置你也能编译和运行`Single View Application`模板创建的应用程序。  
+使用iOS虚拟器去编译和运行你的应用程序，虚拟机被包括在Xcode中。这个虚拟机可以提供给你一个概念如果你的应用运行在设备上看起来是什么样和操作是怎样。  
+这个虚拟机还有一堆不同类型硬件设备的模型-包括iPhone和iPad的所有尺寸和分辨率-你可以在你开发程序所需要的每个设备上模拟运行你的应用程序。在这个课程中，我们使用iPhone 7设备。 
+ </br>
+
+**运行你的应用程序在虚拟机上**  
+1.在Xcode工具栏的`运行方案(Scheme)`弹出菜单，现在iPhone 7。  
+这个`运行方案(Scheme)`弹出菜单让你选择一个你想你的应用程序运行的虚拟机或者真机设备。确定你选择的是iPhone 7虚拟机而不是iOS设备。
+#![](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_schememenu_2x.png)
+</br>
+
+2.点击`运行按钮(Run button)`，它位于Xcode工具栏的左上角。
+#![](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_toolbar_2x.png)
+</br>
+
+或者，选择`Product > Run`(或者按快捷键`Command-R`)。
+如果你是第一次运行应用程序，Xcode会询问你是否`在MAC上启动开发者模式(enable developer mode on your Mac)`。开发者模式允许Xcode去访问某些调试功能而不用每次都需要你去输入密码。下面这个提示让你决定是否启动开发者模式。
+#![](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_developermode_2x.png)
+</br>
+
+如果你选择不开启开发者模式，在之后你可能会被要求输入密码。这篇教程假定开发者模式被开启了。  
+3.编译过程完成之后查看Xcode的工具栏。  
+Xcode在[activity viewer](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW24)里面展示关于编译过程的信息，它在这个工具栏的中间。
 
 
 
@@ -201,7 +229,7 @@ Xcode会下载到你的<code>/Applications</code>的目录下。
 
 <p>Xcode含有一些内置的应用模板用于开发相同类型的IOS应用，类型例如游戏，带导航的基本面板的应用，和带列表的基本视图的应用等。这些模板大多数都带有预先设定好的接口和资源代码文件。对于这个教程，你将从最基本的模板：<code>单视图应用模板(Single View Application)</code>开始使用。<br></p>
 
-<p><code>去创建一个新工程</code> <br>
+<p><strong>去创建一个新工程</strong> <br>
 1.从电脑的<code>应用程序(/Applications)</code>目录打开Xcode。 <br>
 如果这是你第一次启动Xcode程序，它可能会请求你去同意用户协议和去下载额外的组件。跟随电脑屏幕上的提示操作直到设置完整然后真正的启动。 <br>
 等一会Xcode启动，这个欢迎窗口出现。</p>
@@ -250,6 +278,46 @@ Xcode会在<a href="https://developer.apple.com/library/content/referencelibrary
   <p><strong>扩展</strong> <br>
   在你的应用运行在iOS设备上之前，你需要设置一个有效的团队。如果你是苹果开发商计划的一个会员的组织或个人。你在这可以选择一个团队。否则你只能通过你的苹果ID被分配一个个人的团队然后使用它将你的应用运行在设备上。但是，在你将你的应用提交到苹果的应用商店之前你必须加入苹果开发商。更多信息，点击电脑的<code>Help &gt; Xcode Help 然后搜索“Signing workflow.”</code></p>
 </blockquote>
+
+<h3 id="xcode">熟悉Xcode</h3>
+
+<p>Xcode包括你创建一个应用需要的所有东西。它组织了创建应用程序所需的所有文件和资源。它提供给你编辑你的代码和用户接口的功能。而且，Xcode可以让你编译、运行和调试你的应用程序——为iOS设备提供模拟器和一个强大的集成调试器。花一些时间让你自己去熟悉Xcode工作区间的主要区域。在接下来的整个教程中你会使用在窗口中的标示区域。不要被所有的碎片淹没；当你需要使用每个区域的时候都会有更详细的信息描述。</p>
+
+<h1 id="httpsdeveloperapplecomlibrarycontentreferencelibrarygettingstarteddevelopiosappsswiftartbbui_workspacewindow_callouts_2xpng"><img src="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_workspacewindow_callouts_2x.png" alt="" title=""></h1>
+
+<p><br></p>
+
+<h2 id="ios">运行iOS虚拟器</h2>
+
+<p>因为你的应用程序是基于Xcode模板创建的，这个基本的应用程序的环境已经自动帮你配置好了。尽管你不写任何代码，也没有任何额外的配置你也能编译和运行<code>Single View Application</code>模板创建的应用程序。 <br>
+使用iOS虚拟器去编译和运行你的应用程序，虚拟机被包括在Xcode中。这个虚拟机可以提供给你一个概念如果你的应用运行在设备上看起来是什么样和操作是怎样。 <br>
+这个虚拟机还有一堆不同类型硬件设备的模型-包括iPhone和iPad的所有尺寸和分辨率-你可以在你开发程序所需要的每个设备上模拟运行你的应用程序。在这个课程中，我们使用iPhone 7设备。 
+ <br></p>
+
+<p><strong>运行你的应用程序在虚拟机上</strong> <br>
+1.在Xcode工具栏的<code>运行方案(Scheme)</code>弹出菜单，现在iPhone 7。 <br>
+这个<code>运行方案(Scheme)</code>弹出菜单让你选择一个你想你的应用程序运行的虚拟机或者真机设备。确定你选择的是iPhone 7虚拟机而不是iOS设备。</p>
+
+<h1 id="httpsdeveloperapplecomlibrarycontentreferencelibrarygettingstarteddevelopiosappsswiftartbbui_schememenu_2xpng"><img src="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_schememenu_2x.png" alt="" title=""></h1>
+
+<p><br></p>
+
+<p>2.点击<code>运行按钮(Run button)</code>，它位于Xcode工具栏的左上角。</p>
+
+<h1 id="httpsdeveloperapplecomlibrarycontentreferencelibrarygettingstarteddevelopiosappsswiftartbbui_toolbar_2xpng"><img src="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_toolbar_2x.png" alt="" title=""></h1>
+
+<p><br></p>
+
+<p>或者，选择<code>Product &gt; Run</code>(或者按快捷键<code>Command-R</code>)。
+如果你是第一次运行应用程序，Xcode会询问你是否<code>在MAC上启动开发者模式(enable developer mode on your Mac)</code>。开发者模式允许Xcode去访问某些调试功能而不用每次都需要你去输入密码。下面这个提示让你决定是否启动开发者模式。</p>
+
+<h1 id="httpsdeveloperapplecomlibrarycontentreferencelibrarygettingstarteddevelopiosappsswiftartbbui_developermode_2xpng"><img src="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/BBUI_developermode_2x.png" alt="" title=""></h1>
+
+<p><br></p>
+
+<p>如果你选择不开启开发者模式，在之后你可能会被要求输入密码。这篇教程假定开发者模式被开启了。 <br>
+3.编译过程完成之后查看Xcode的工具栏。 <br>
+Xcode在<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW24">activity viewer</a>里面展示关于编译过程的信息，它在这个工具栏的中间。</p>
 <!-- content end -->
 </div>
 <br>
