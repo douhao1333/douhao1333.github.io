@@ -36,7 +36,7 @@ OS X 和 iOS提供了一系列技术用于支撑密码服务——加密和解�
 </br>
 
 ##概述
-OS X 和 iOS提供的一些加密服务包括：  
+OS X 和 iOS提供的一些密码服务包括：  
 
 * 加密和解密（包括通用的和特殊的）
 * 使用钥匙串的密钥管理
@@ -46,15 +46,43 @@ OS X 和 iOS提供的一些加密服务包括：
 
 ###**加密、签名和验证还有数字证书能保护数据免受窥视**
 有两个主要的加密类型：对称加密，是一种使用单个共享密钥对数据加密和解密的方法；和非对称加密，是用一个密钥对数据加密和另一个分离(但是相关)密钥对数据解密。你能使用哈希来检测对数据片段的修改。你可以使用哈希和非对称密钥结合生成一个数字签名，当根据数据证书进行验证时，证明数据片段的来源。数字证书，反过来，通过验证签署证书的的一方的签名进行验证，然后验证该方的证书，直到得到一个你所信任的固定的证书，这个证书被称为`锚点证书(anchor certificate)`。  
-相关章节: `深度密码学概念(Cryptography Concepts In Depth)`
+相关章节: `深度密码学概念`([Cryptography Concepts In Depth](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CryptographyConcepts/CryptographyConcepts.html#//apple_ref/doc/uid/TP40011172-CH8-SW1))
 </br>
 
 ###**OS和iOS提供加密和散列API**
 OS和iOS提供了一些列加密和散列数据的API，包括`钥匙串服务(Keychain Services)`; `密码消息语法服务(Cryptographic Message Syntax Services)`; `证书(Certificate)`, `密钥(Key)`,`和证书服务(Trust Services)`; `通用密码(Common Crypto)`; `安全转换(Security Transforms)`。  
-相关章节: `加密和散列数据(Encrypting and Hashing Data
-)`
+相关章节: `加密和散列数据`([Encrypting and Hashing Data
+](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW1))
 </br>
 
+###**钥匙串帮助你存储密码信息**
+如果你的应用程序必须存储加密密钥，密码，证书和其他安全相关的信息。都可以使用钥匙串。钥匙串为小信息提供安全存储，因此运行在系统上的其他应用无法访问，只有在用户登录或者解锁设备之后才能访问。OS X 和 iOS提供了两套API用于对钥匙串的操作和从钥匙串中获取密钥：证书，密钥，信任服务API和钥匙串服务API。  
+相关章节: `管理密钥、证书和密码`([Managing Keys, Certificates, and Passwords](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/KeyManagementAPIs/KeyManagementAPIs.html#//apple_ref/doc/uid/TP40011172-CH11-SW1))
+</br>
+
+###**OS X 和 iOS提供密码安全随机数生成**
+一些加密任务需要你去生成一些密码性强的伪随机数。OS X 通过`/dev/random`设备节点来提供这些数字。iOS则通过随机化服务API来提供这些数字。  
+相关章节: `生成随机数`([Generating Random Numbers
+](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/RandomNumberGenerationAPIs/RandomNumberGenerationAPIs.html#//apple_ref/doc/uid/TP40011172-CH12-SW1))
+</br>
+
+###**OS X 和 iOS提供安全网络通讯API**
+数据传输安全需要一个安全通讯渠道。OS X 和 iOS提供了一系列API用于建立安全通讯渠道，包括网址加载系统，在`Core Foundation`和`Foundation`的套接字流，和安全传输。  
+相关章节: `数据传输安全`([Transmitting Data Securely
+](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/SecureNetworkCommunicationAPIs/SecureNetworkCommunicationAPIs.html#//apple_ref/doc/uid/TP40011172-CH13-SW1))
+</br>
+
+###**已经弃用的技术**
+尽管`CDSA`和`CSSM`API在OS X 10.7及以后的版本都被弃用了，但你可能在有些情况下需要使用它。基于这种原因，这个文档提供了一个附录。  
+相关章节: `CDSA 概述`([CDSA Overview
+](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CDSA/CDSA.html#//apple_ref/doc/uid/TP40011172-CH4-SW1))
+</br>
+
+##先决条件
+在阅读这个文档之前，你应该熟悉了`安全概述`([Security Overview](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976))和`安全编码指南`([Secure Coding Guide](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/SecureCodingGuide/Introduction.html#//apple_ref/doc/uid/TP40002415))。
+
+##也可以看看
+有关OS X身份验证和授权（基于加密技术构建的）的详细信息，请阅读`身份验证，授权和权限指南`([Authentication, Authorization, and Permissions Guide](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/AuthenticationAndAuthorizationGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011200))。 
 
 <!-- markdown end -->
 </div>
@@ -79,7 +107,7 @@ OS和iOS提供了一些列加密和散列数据的API，包括`钥匙串服务(K
 
 <h2 id="">概述</h2>
 
-<p>OS X 和 iOS提供的一些加密服务包括：  </p>
+<p>OS X 和 iOS提供的一些密码服务包括：  </p>
 
 <ul>
 <li>加密和解密（包括通用的和特殊的）</li>
@@ -92,15 +120,50 @@ OS和iOS提供了一些列加密和散列数据的API，包括`钥匙串服务(K
 <h3 id=""><strong>加密、签名和验证还有数字证书能保护数据免受窥视</strong></h3>
 
 <p>有两个主要的加密类型：对称加密，是一种使用单个共享密钥对数据加密和解密的方法；和非对称加密，是用一个密钥对数据加密和另一个分离(但是相关)密钥对数据解密。你能使用哈希来检测对数据片段的修改。你可以使用哈希和非对称密钥结合生成一个数字签名，当根据数据证书进行验证时，证明数据片段的来源。数字证书，反过来，通过验证签署证书的的一方的签名进行验证，然后验证该方的证书，直到得到一个你所信任的固定的证书，这个证书被称为<code>锚点证书(anchor certificate)</code>。 <br>
-相关章节: <code>深度密码学概念(Cryptography Concepts In Depth)</code>
+相关章节: <code>深度密码学概念</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CryptographyConcepts/CryptographyConcepts.html#//apple_ref/doc/uid/TP40011172-CH8-SW1">Cryptography Concepts In Depth</a>)
 <br></p>
 
 <h3 id="osiosapi"><strong>OS和iOS提供加密和散列API</strong></h3>
 
 <p>OS和iOS提供了一些列加密和散列数据的API，包括<code>钥匙串服务(Keychain Services)</code>; <code>密码消息语法服务(Cryptographic Message Syntax Services)</code>; <code>证书(Certificate)</code>, <code>密钥(Key)</code>,<code>和证书服务(Trust Services)</code>; <code>通用密码(Common Crypto)</code>; <code>安全转换(Security Transforms)</code>。 <br>
-相关章节: <code>加密和散列数据(Encrypting and Hashing Data
-)</code>
+相关章节: <code>加密和散列数据</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW1">Encrypting and Hashing Data
+</a>)
 <br></p>
+
+<h3 id=""><strong>钥匙串帮助你存储密码信息</strong></h3>
+
+<p>如果你的应用程序必须存储加密密钥，密码，证书和其他安全相关的信息。都可以使用钥匙串。钥匙串为小信息提供安全存储，因此运行在系统上的其他应用无法访问，只有在用户登录或者解锁设备之后才能访问。OS X 和 iOS提供了两套API用于对钥匙串的操作和从钥匙串中获取密钥：证书，密钥，信任服务API和钥匙串服务API。 <br>
+相关章节: <code>管理密钥、证书和密码</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/KeyManagementAPIs/KeyManagementAPIs.html#//apple_ref/doc/uid/TP40011172-CH11-SW1">Managing Keys, Certificates, and Passwords</a>)
+<br></p>
+
+<h3 id="osxios"><strong>OS X 和 iOS提供密码安全随机数生成</strong></h3>
+
+<p>一些加密任务需要你去生成一些密码性强的伪随机数。OS X 通过<code>/dev/random</code>设备节点来提供这些数字。iOS则通过随机化服务API来提供这些数字。 <br>
+相关章节: <code>生成随机数</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/RandomNumberGenerationAPIs/RandomNumberGenerationAPIs.html#//apple_ref/doc/uid/TP40011172-CH12-SW1">Generating Random Numbers
+</a>)
+<br></p>
+
+<h3 id="osxiosapi"><strong>OS X 和 iOS提供安全网络通讯API</strong></h3>
+
+<p>数据传输安全需要一个安全通讯渠道。OS X 和 iOS提供了一系列API用于建立安全通讯渠道，包括网址加载系统，在<code>Core Foundation</code>和<code>Foundation</code>的套接字流，和安全传输。 <br>
+相关章节: <code>数据传输安全</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/SecureNetworkCommunicationAPIs/SecureNetworkCommunicationAPIs.html#//apple_ref/doc/uid/TP40011172-CH13-SW1">Transmitting Data Securely
+</a>)
+<br></p>
+
+<h3 id=""><strong>已经弃用的技术</strong></h3>
+
+<p>尽管<code>CDSA</code>和<code>CSSM</code>API在OS X 10.7及以后的版本都被弃用了，但你可能在有些情况下需要使用它。基于这种原因，这个文档提供了一个附录。 <br>
+相关章节: <code>CDSA 概述</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CDSA/CDSA.html#//apple_ref/doc/uid/TP40011172-CH4-SW1">CDSA Overview
+</a>)
+<br></p>
+
+<h2 id="">先决条件</h2>
+
+<p>在阅读这个文档之前，你应该熟悉了<code>安全概述</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976">Security Overview</a>)和<code>安全编码指南</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/SecureCodingGuide/Introduction.html#//apple_ref/doc/uid/TP40002415">Secure Coding Guide</a>)。</p>
+
+<h2 id="">也可以看看</h2>
+
+<p>有关OS X身份验证和授权（基于加密技术构建的）的详细信息，请阅读<code>身份验证，授权和权限指南</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/AuthenticationAndAuthorizationGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011200">Authentication, Authorization, and Permissions Guide</a>)。 </p>
 <!-- content end -->
 </div>
 <br>
