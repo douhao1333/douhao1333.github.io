@@ -167,7 +167,18 @@ Xcode在窗口的主要编辑区域打开资源文件。
 
 或者，双击`AppDelegate.swift`文件，把它在一个单独的窗口里打开。  
 **应用程序委托源文件**  
-这个` AppDelegate.swift`资源文件有两个主要的功能：
+这个` AppDelegate.swift`资源文件有两个主要的功能：  
+
+* 它定义你的`AppDelegate`类。这个`应用程序委托`([app delegate ](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW27))创建应用程序绘制的窗口，提供了一个响应应用程序状态转换的地方。
+* 它为你的应用程序创建了一个程序入口点和一个运行循环，向你的应用程序提供输入事件。这个工作由`UIApplicationMain`属性完成(`@UIApplicationMain`)，它出现在文件顶部的位置。  
+使用`UIApplicationMain`属性的作用等效于调用这个`UIApplicationMain`函数，并将你的`AppDelegate `类的类名作为委托类的类名。为了响应，系统创建了一个`应用程序对象`([application object](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW75))。这个应用程序对象负责去管理这个应用程序的生命周期。系统也创建了一个这个`AppDelegate `类的实例，这个实例被分配给应用程序对象。最后，系统启动的你应用程序。
+</br>
+
+这个`AppDelegate `类是当你的项目被创建时自动创建。除非你要做一些非同寻常的操作，要不你就应该使用这个由Xcode提供的类去初始化你的应用程序和响应应用程序级别的事件。`AppDelegate `类采用`UIApplicationDelegate`协议。这个协议定义了一堆方法让你用于去设置你的应用程序，去响应这个应用程序的状态转换并且去操作别的应用程序级别的事件。  
+`AppDelegate `类包含了一个单独的属性：`window`.  
+>`var window: UIWindow?`   
+
+这个属性存储了一个应用程序的窗口的引用。
 
 
 
@@ -373,7 +384,23 @@ Xcode在窗口的主要编辑区域打开资源文件。</p>
 
 <p>或者，双击<code>AppDelegate.swift</code>文件，把它在一个单独的窗口里打开。 <br>
 <strong>应用程序委托源文件</strong> <br>
-这个<code>AppDelegate.swift</code>资源文件有两个主要的功能：</p>
+这个<code>AppDelegate.swift</code>资源文件有两个主要的功能：  </p>
+
+<ul>
+<li>它定义你的<code>AppDelegate</code>类。这个<code>应用程序委托</code>(<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW27">app delegate </a>)创建应用程序绘制的窗口，提供了一个响应应用程序状态转换的地方。</li>
+<li>它为你的应用程序创建了一个程序入口点和一个运行循环，向你的应用程序提供输入事件。这个工作由<code>UIApplicationMain</code>属性完成(<code>@UIApplicationMain</code>)，它出现在文件顶部的位置。 <br>
+使用<code>UIApplicationMain</code>属性的作用等效于调用这个<code>UIApplicationMain</code>函数，并将你的<code>AppDelegate</code>类的类名作为委托类的类名。为了响应，系统创建了一个<code>应用程序对象</code>(<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW75">application object</a>)。这个应用程序对象负责去管理这个应用程序的生命周期。系统也创建了一个这个<code>AppDelegate</code>类的实例，这个实例被分配给应用程序对象。最后，系统启动的你应用程序。
+<br></li>
+</ul>
+
+<p>这个<code>AppDelegate</code>类是当你的项目被创建时自动创建。除非你要做一些非同寻常的操作，要不你就应该使用这个由Xcode提供的类去初始化你的应用程序和响应应用程序级别的事件。<code>AppDelegate</code>类采用<code>UIApplicationDelegate</code>协议。这个协议定义了一堆方法让你用于去设置你的应用程序，去响应这个应用程序的状态转换并且去操作别的应用程序级别的事件。 <br>
+<code>AppDelegate</code>类包含了一个单独的属性：<code>window</code>.  </p>
+
+<blockquote>
+  <p><code>var window: UIWindow?</code>   </p>
+</blockquote>
+
+<p>这个属性存储了一个应用程序的窗口的引用。</p>
 <!-- content end -->
 </div>
 <br>
