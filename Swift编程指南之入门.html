@@ -178,7 +178,8 @@ Xcode在窗口的主要编辑区域打开资源文件。
 `AppDelegate `类包含了一个单独的属性：`window`.  
 >`var window: UIWindow?`   
 
-这个属性存储了一个应用程序的窗口的引用。
+这个属性存储了一个应用程序的窗口的引用。这个窗口代表的是应用程序的视图层次结构的根视图。它是你的所有应用程序的内容绘制的地方。注意这个窗口属性是一个`可选的`([optional](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW11))，意味着它在某个点可能没有值(为`空`([nil](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW5)))。  
+`AppDelegate `类还包含了以下代理方法的存根实现:  
 
 
 
@@ -400,7 +401,8 @@ Xcode在窗口的主要编辑区域打开资源文件。</p>
   <p><code>var window: UIWindow?</code>   </p>
 </blockquote>
 
-<p>这个属性存储了一个应用程序的窗口的引用。</p>
+<p>这个属性存储了一个应用程序的窗口的引用。这个窗口代表的是应用程序的视图层次结构的根视图。它是你的所有应用程序的内容绘制的地方。注意这个窗口属性是一个<code>可选的</code>(<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW11">optional</a>)，意味着它在某个点可能没有值(为<code>空</code>(<a href="https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/GlossaryDefinitions.html#//apple_ref/doc/uid/TP40015214-CH12-SW5">nil</a>))。 <br>
+<code>AppDelegate</code>类还包含了以下代理方法的存根实现:  </p>
 <!-- content end -->
 </div>
 <br>
