@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Keywords" content="blog"/>
+    <meta name="Description" content="blog"/>
+    <title>Simple</title>
+    <link rel="shortcut icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+    	<ul id="pages">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/tags">tags</a></li>
+            <li><a href="/#/archive">archive</a></li>
+    	</ul>
+    </div>
+	<div class="wrap-header">
+	<h1>
+    <a href="/" id="title"></a>
+	</h1>
+	</div>
+<div id="md" style="display: none;">
+<!-- markdown -->
+#Cryptographic Services Guide
+#[Cryptography Concepts In Depth](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CryptographyConcepts/CryptographyConcepts.html)
+#深度密码学概念
+密码学(来自于希腊语`kryptos `，意思为隐藏)这个单词它的核心是指数据不可读而免受窥探的技术。但是，密码学也因为其他目的而使用。密码学包含了很大范围的技术，被用于验证数据的真实性(检测修改)，确定人或其他实体的身份，确定是谁发送了特定的消息或者创建了特定的数据，通过网络发送数据的安全，在输入密码或者密码短语后安全地锁定文件等等。
+本章节介绍了许多这些技术，从基本加密开始，然后移动到其他基于基本加密的构造。
+> **提示**  
+这个章节重复了许多在`安全概述`([Security Overview](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976))中的内容，但是有更多的细节和深度。在阅读这一掌机之前阅读那篇文档可能会对你有帮助。 
+
+##什么是加密？
+加密是将数据转换为不使用一些密钥的就无法获取的形式。类似的被转换的数据被称为`密文(ciphertext)`。
+
+
+
+##加密的类型
+ 
+
+<!-- markdown end -->
+</div>
+<div class="entry" id="main">
+<!-- content -->
+<h1 id="cryptographicservicesguide">Cryptographic Services Guide</h1>
+
+<h1 id="cryptographyconceptsindepthhttpsdeveloperapplecomlibraryprereleasecontentdocumentationsecurityconceptualcryptoservicescryptographyconceptscryptographyconceptshtml"><a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CryptographyConcepts/CryptographyConcepts.html">Cryptography Concepts In Depth</a></h1>
+
+<h1 id="">深度密码学概念</h1>
+
+<p>密码学(来自于希腊语<code>kryptos</code>，意思为隐藏)这个单词它的核心是指数据不可读而免受窥探的技术。但是，密码学也因为其他目的而使用。密码学包含了很大范围的技术，被用于验证数据的真实性(检测修改)，确定人或其他实体的身份，确定是谁发送了特定的消息或者创建了特定的数据，通过网络发送数据的安全，在输入密码或者密码短语后安全地锁定文件等等。
+本章节介绍了许多这些技术，从基本加密开始，然后移动到其他基于基本加密的构造。</p>
+
+<blockquote>
+  <p><strong>提示</strong> <br>
+  这个章节重复了许多在<code>安全概述</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976">Security Overview</a>)中的内容，但是有更多的细节和深度。在阅读这一掌机之前阅读那篇文档可能会对你有帮助。 </p>
+</blockquote>
+
+<h2 id="">什么是加密？</h2>
+
+<p>加密是将数据转换为不使用一些密钥的就无法获取的形式。类似的被转换的数据被称为<code>密文(ciphertext)</code>。</p>
+
+<h2 id="">加密的类型</h2>
+<!-- content end -->
+</div>
+<br>
+<br>
+    <div id="disqus_thread"></div>
+	<div class="footer">
+		<p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
+	</div>
+</div>
+<script src="main.js"></script>
+<script id="content" type="text/mustache">
+    <h1>{{title}}</h1>
+    <div class="tag">
+    {{date}}
+    {{#tags}}
+    <a href="/#/tag/{{name}}">#{{name}}</a>
+    {{/tags}}
+    </div>
+</script>
+<script id="pagesTemplate" type="text/mustache">
+    {{#pages}}
+    <li>
+        <a href="{{path}}">{{title}}</a>
+    </li>
+    {{/pages}}
+</script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "main.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $("#title").html(data.name);
+            var pagesTemplate = Hogan.compile($("#pagesTemplate").html());
+            var pagesHtml = pagesTemplate.render({"pages": data.pages});
+            $("#pages").append(pagesHtml);
+            //path
+            var path = "密码服务指南:深度密码学概念.html";
+            //path end
+            var now = 0;
+            for (var i = 0; i < data.posts.length; ++i)
+                if (path == data.posts[i].path)
+                    now = i;
+            var post = data.posts[now];
+            var tmp = post.tags.split(" ");
+            var tags = [];
+            for (var i = 0; i < tmp.length; ++i)
+                if (tmp[i].length > 0)
+                    tags.push({"name": tmp[i]});
+            var contentTemplate = Hogan.compile($("#content").html());
+            var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
+            $("#main").prepend(contentHtml);
+            if (data.disqus_shortname.length > 0) {
+                var disqus_shortname = data.disqus_shortname;
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+    });
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ["\\(", "\\)"]], processEscapes: true}});
+</script>
+</body>
+</html>
