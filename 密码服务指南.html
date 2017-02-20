@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Keywords" content="blog"/>
+    <meta name="Description" content="blog"/>
+    <title>Simple</title>
+    <link rel="shortcut icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+    	<ul id="pages">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/tags">tags</a></li>
+            <li><a href="/#/archive">archive</a></li>
+    	</ul>
+    </div>
+	<div class="wrap-header">
+	<h1>
+    <a href="/" id="title"></a>
+	</h1>
+	</div>
+<div id="md" style="display: none;">
+<!-- markdown -->
+#Cryptographic Services Guide
+#[About Cryptographic Services](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Introduction/Introduction.html)
+#关于密码服务
+> **重要提示**  
+这篇文档包含有关API或开发技术的初步信息。这些信息会更改，根据这些信息实现的软件应该在最终版的操作系统上进行测试。  
+
+OS X操作系统 和 iOS操作系统提供了一系列技术用于支撑密码服务——加密和解密，散列，随机数生成，安全网络通讯等等。这些技术能被用来保护静态数据(当存储在你的硬盘驱动器或者其他媒体上)，保护传输的数据，确定第三方的身份，构建额外的安全技术。
+#![](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/CrytoServices-IntroArt-120412_2x.png)
+</br>
+
+##概述
+OS X操作系统 和 iOS操作系统提供的一些加密服务包括：  
+
+* 加密和解密（包括通用的和特殊的）
+* 使用钥匙串的密钥管理
+* 加密强随机数生成
+* 安全通讯（SSL和TLS）
+* 使用FileVault和iOS文件的安全存储
+
+###**加密、签名和验证还有数字证书能保护数据免受窥视**
+有两个主要的加密类型：对称加密，是一种使用单个共享密钥对数据加密和解密的方法；和非对称加密，是用一个密钥对数据加密和另一个分离(但是相关)密钥对数据解密。你能使用哈希来检测对数据片段的修改。你可以使用哈希和非对称密钥结合生成一个数字签名，当根据数据证书进行验证时，证明数据片段的来源。数字证书，反过来，通过验证签署证书的的一方的签名进行验证，然后验证该方的证书，直到得到一个你所信任的固定的证书，这个证书被称为`锚点证书(anchor certificate)`。  
+相关章节: `深度密码学概念(Cryptography Concepts In Depth)`
+
+
+
+<!-- markdown end -->
+</div>
+<div class="entry" id="main">
+<!-- content -->
+
+<!-- content end -->
+</div>
+<br>
+<br>
+    <div id="disqus_thread"></div>
+	<div class="footer">
+		<p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
+	</div>
+</div>
+<script src="main.js"></script>
+<script id="content" type="text/mustache">
+    <h1>{{title}}</h1>
+    <div class="tag">
+    {{date}}
+    {{#tags}}
+    <a href="/#/tag/{{name}}">#{{name}}</a>
+    {{/tags}}
+    </div>
+</script>
+<script id="pagesTemplate" type="text/mustache">
+    {{#pages}}
+    <li>
+        <a href="{{path}}">{{title}}</a>
+    </li>
+    {{/pages}}
+</script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "main.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $("#title").html(data.name);
+            var pagesTemplate = Hogan.compile($("#pagesTemplate").html());
+            var pagesHtml = pagesTemplate.render({"pages": data.pages});
+            $("#pages").append(pagesHtml);
+            //path
+            var path = "密码服务指南.html";
+            //path end
+            var now = 0;
+            for (var i = 0; i < data.posts.length; ++i)
+                if (path == data.posts[i].path)
+                    now = i;
+            var post = data.posts[now];
+            var tmp = post.tags.split(" ");
+            var tags = [];
+            for (var i = 0; i < tmp.length; ++i)
+                if (tmp[i].length > 0)
+                    tags.push({"name": tmp[i]});
+            var contentTemplate = Hogan.compile($("#content").html());
+            var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
+            $("#main").prepend(contentHtml);
+            if (data.disqus_shortname.length > 0) {
+                var disqus_shortname = data.disqus_shortname;
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+    });
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ["\\(", "\\)"]], processEscapes: true}});
+</script>
+</body>
+</html>
