@@ -34,13 +34,12 @@
 这个章节重复了许多在`安全概述`([Security Overview](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976))中的内容，但是有更多的细节和深度。在阅读这一掌机之前阅读那篇文档可能会对你有帮助。 
 
 ##什么是加密？
-加密是将数据转换为不使用一些密钥的就无法获取的形式。类似的被转换的数据被称为`密文(ciphertext)`。
-
-
+加密是将数据转换为不使用一些密钥的就无法获取的形式。类似的被转换的数据被称为`密文(ciphertext)`。使用密钥来反转这个过程并将数据返回到其原始(`明文(cleartext)`或`纯文本(plaintext)`)形式被称为`解密(decryption)`。OS X 和 iOS的大多数安全API在某种程序上都依赖于文本或者数据的加密。例如，加密被用于证书和数字签名的创建，用于安全存储钥匙串中的秘密，和用于信息的安全传输。  
+加密是任何从一个字符串替换成另一个字符串的简单过程，这个过程中密钥是替换规则，替换规则是一个复杂的数学算法。以安全为目的，解密密文越困难，越好。另一方面，如果算法太复杂，会花费很长的时间加密或者需要的密钥太大无法轻松存储，对于使用个人电脑的情况这种做法是不切实际的。因此，在加密的强度(就是某人发现算法和密钥有多困难)和易用性之间达到一个平衡。  
 
 ##加密的类型
+在电脑安全中有两种主要的加密类型，名称为`对称密钥加密(symmetric key encryption)`和`非对称密钥加密(asymmetric key encryption)`。
  
-
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
@@ -61,9 +60,12 @@
 
 <h2 id="">什么是加密？</h2>
 
-<p>加密是将数据转换为不使用一些密钥的就无法获取的形式。类似的被转换的数据被称为<code>密文(ciphertext)</code>。</p>
+<p>加密是将数据转换为不使用一些密钥的就无法获取的形式。类似的被转换的数据被称为<code>密文(ciphertext)</code>。使用密钥来反转这个过程并将数据返回到其原始(<code>明文(cleartext)</code>或<code>纯文本(plaintext)</code>)形式被称为<code>解密(decryption)</code>。OS X 和 iOS的大多数安全API在某种程序上都依赖于文本或者数据的加密。例如，加密被用于证书和数字签名的创建，用于安全存储钥匙串中的秘密，和用于信息的安全传输。 <br>
+加密是任何从一个字符串替换成另一个字符串的简单过程，这个过程中密钥是替换规则，替换规则是一个复杂的数学算法。以安全为目的，解密密文越困难，越好。另一方面，如果算法太复杂，会花费很长的时间加密或者需要的密钥太大无法轻松存储，对于使用个人电脑的情况这种做法是不切实际的。因此，在加密的强度(就是某人发现算法和密钥有多困难)和易用性之间达到一个平衡。  </p>
 
 <h2 id="">加密的类型</h2>
+
+<p>在电脑安全中有两种主要的加密类型，名称为<code>对称密钥加密(symmetric key encryption)</code>和<code>非对称密钥加密(asymmetric key encryption)</code>。</p>
 <!-- content end -->
 </div>
 <br>
