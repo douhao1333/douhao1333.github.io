@@ -88,7 +88,26 @@
 最常用的哈希函数是`SHA-1`，由美国政府开发和公布的一个算法，从数据长度为`2**64`位的任何数据产生一个160位的哈希值。还有一些更奇特的算法例如`SHA-2`，`基于椭圆曲线(elliptic-curve-based)`的算法等等。  
 因为已经存在的系统和基础设施，你可能偶尔需要使用老算法如`MD5`,但是它们因为已知的漏洞不推荐使用在新的设计中。
 
-**数字签名
+##数字签名
+`数字签名(Digital Signatures)`是一种使用公钥密码术确保消息或者其他数据的完整性的方法。传统的签名是用墨水在纸上写，它们用于认证签名人的身份。但是，数字签名超越了传统签名，因为它们还可以确保签名不会被更改。这就像签署支票这样一种方式，如果某个人改变了支票上写的金额，`无效`邮票在支票的表面可见。  
+在一个签名者创建一个数字签名之前，签名者首先要有一个数字身份——一对公私钥和一个对应的数字证书，以证明签名者的公钥的真实性。  
+签名者生成数据的一条消息摘要然后使用他的私钥去加密摘要。签名者包括加密摘要和关于签名者的数字证书的信息以及消息。加密摘要和数字证书组合就是数字签名。  
+这个证书之后会被接收者用于验证签名；证书包括用于解密摘要的公钥和用于创建摘要的算法。为了验证签名的文档没有被改变，接收者使用相同的算法去创建已接受的消息的摘要，然后使用公钥去解密来自消息签名中的加密摘要。如果两个摘要是相同的，则消息没有被更改并且是通过消息的发送者的公钥发送的。  
+为了确保提供签名的人不仅是提供数据的人也是他或她声明的身份，证书也要签名—这种情况由颁发证书的认证机构负责。(更多认证机构的内容在之后)   
+数字签名在代码签名中扮演了一个关键角色。开发者被鼓励去对他们的应用签名。执行的时候，每个应用的签名被检查有效性。IOS上的所有应用都需要数字签名。阅读`代码签名指南`([Code Signing Guide](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005929))了解更多关于在iOS和OS X上代码签名怎么使用的信息。  
+图 1-2 说明了数字签名的创建。  
+**图 1-2 创建数字签名**
+#![](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/signed_doc_2x.png)
+</br>
+
+图 1-3 说明了数字签名的验证。接收者从签名者的证书里得到签名者的公钥然后使用它去解密摘要。使用证书中指示的算法，接收者创建一个新的数据的摘要然后和在签名中传递的摘要的解密副本去比较。如果匹配，则这个接收的数据和签名者创建的源数据是一样的。  
+**图 1-3 验证数字签名**
+#![](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/verify_signature_2x.png)
+</br>
+
+##签名证书
+
+
 
 <!-- markdown end -->
 </div>
@@ -175,7 +194,29 @@
 最常用的哈希函数是<code>SHA-1</code>，由美国政府开发和公布的一个算法，从数据长度为<code>2**64</code>位的任何数据产生一个160位的哈希值。还有一些更奇特的算法例如<code>SHA-2</code>，<code>基于椭圆曲线(elliptic-curve-based)</code>的算法等等。 <br>
 因为已经存在的系统和基础设施，你可能偶尔需要使用老算法如<code>MD5</code>,但是它们因为已知的漏洞不推荐使用在新的设计中。</p>
 
-<p>**数字签名</p>
+<h2 id="">数字签名</h2>
+
+<p><code>数字签名(Digital Signatures)</code>是一种使用公钥密码术确保消息或者其他数据的完整性的方法。传统的签名是用墨水在纸上写，它们用于认证签名人的身份。但是，数字签名超越了传统签名，因为它们还可以确保签名不会被更改。这就像签署支票这样一种方式，如果某个人改变了支票上写的金额，<code>无效</code>邮票在支票的表面可见。 <br>
+在一个签名者创建一个数字签名之前，签名者首先要有一个数字身份——一对公私钥和一个对应的数字证书，以证明签名者的公钥的真实性。 <br>
+签名者生成数据的一条消息摘要然后使用他的私钥去加密摘要。签名者包括加密摘要和关于签名者的数字证书的信息以及消息。加密摘要和数字证书组合就是数字签名。 <br>
+这个证书之后会被接收者用于验证签名；证书包括用于解密摘要的公钥和用于创建摘要的算法。为了验证签名的文档没有被改变，接收者使用相同的算法去创建已接受的消息的摘要，然后使用公钥去解密来自消息签名中的加密摘要。如果两个摘要是相同的，则消息没有被更改并且是通过消息的发送者的公钥发送的。 <br>
+为了确保提供签名的人不仅是提供数据的人也是他或她声明的身份，证书也要签名—这种情况由颁发证书的认证机构负责。(更多认证机构的内容在之后) <br>
+数字签名在代码签名中扮演了一个关键角色。开发者被鼓励去对他们的应用签名。执行的时候，每个应用的签名被检查有效性。IOS上的所有应用都需要数字签名。阅读<code>代码签名指南</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005929">Code Signing Guide</a>)了解更多关于在iOS和OS X上代码签名怎么使用的信息。 <br>
+图 1-2 说明了数字签名的创建。 <br>
+<strong>图 1-2 创建数字签名</strong></p>
+
+<h1 id="httpsdeveloperapplecomlibraryprereleasecontentdocumentationsecurityconceptualcryptoservicesartsigned_doc_2xpng"><img src="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/signed_doc_2x.png" alt="" title=""></h1>
+
+<p><br></p>
+
+<p>图 1-3 说明了数字签名的验证。接收者从签名者的证书里得到签名者的公钥然后使用它去解密摘要。使用证书中指示的算法，接收者创建一个新的数据的摘要然后和在签名中传递的摘要的解密副本去比较。如果匹配，则这个接收的数据和签名者创建的源数据是一样的。 <br>
+<strong>图 1-3 验证数字签名</strong></p>
+
+<h1 id="httpsdeveloperapplecomlibraryprereleasecontentdocumentationsecurityconceptualcryptoservicesartverify_signature_2xpng"><img src="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/verify_signature_2x.png" alt="" title=""></h1>
+
+<p><br></p>
+
+<h2 id="">签名证书</h2>
 <!-- content end -->
 </div>
 <br>
