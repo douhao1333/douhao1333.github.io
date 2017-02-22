@@ -115,7 +115,23 @@
 * 有效期(证书在这之前或之后是无效的)  。
 * 证书扩展——包含附加信息的属性，例如证书允许的用途。  
 
-细心读者将会注意到数字签名包含签名者的证书，而这个签名者的证书进而包含了另一个的证书的数字签名。
+细心读者将会注意到数字签名包含签名者的证书，而这个签名者的证书进而包含了另一个的证书的数字签名。  
+一般来说，每个证书都通过用另一个证书验证了，创建了一个`信任连(chain of trust)`——一个证书的链，在这个链上的每个证书都被后面一个证书数字签名了，在末端的是`根证书(root certificate)`。这个根证书的拥有者被称为`根证书颁发机构(root certification authority)`。图 1-4展示了签名证书的部分。  
+**图 1-4 数字签名的解剖**
+#![](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/certificate_anatomy_2x.png)
+</br>
+
+根证书是自我签名的，意味着根证书的签名是由根证书颁发机构它们自己创建的。图 1-5 和 1-6 展示了证书链是怎么被创建和使用的。图 1-5 展示根证书颁发机构怎么创建它们自己的证书和创建一个证书给二级认证机构。  
+**图 1-5 为根颁发机构和二级认证机构创建证书**
+#![](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/keys_in_cert_chain_2x.png)
+</br>
+
+图 1-6 展示二级认证机构怎么为最后的用户创建一个证书和最后的用户怎么使用它去签署文档。  
+**图 1-6 为最后的用户创建一个证书并用它去签署文档**
+#![](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/keys_in_cert_chain2_2x.png)
+</br>
+
+
 
 
 
@@ -239,7 +255,27 @@
 <li>证书扩展——包含附加信息的属性，例如证书允许的用途。  </li>
 </ul>
 
-<p>细心读者将会注意到数字签名包含签名者的证书，而这个签名者的证书进而包含了另一个的证书的数字签名。</p>
+<p>细心读者将会注意到数字签名包含签名者的证书，而这个签名者的证书进而包含了另一个的证书的数字签名。 <br>
+一般来说，每个证书都通过用另一个证书验证了，创建了一个<code>信任连(chain of trust)</code>——一个证书的链，在这个链上的每个证书都被后面一个证书数字签名了，在末端的是<code>根证书(root certificate)</code>。这个根证书的拥有者被称为<code>根证书颁发机构(root certification authority)</code>。图 1-4展示了签名证书的部分。 <br>
+<strong>图 1-4 数字签名的解剖</strong></p>
+
+<h1 id="httpsdeveloperapplecomlibraryprereleasecontentdocumentationsecurityconceptualcryptoservicesartcertificate_anatomy_2xpng"><img src="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/certificate_anatomy_2x.png" alt="" title=""></h1>
+
+<p><br></p>
+
+<p>根证书是自我签名的，意味着根证书的签名是由根证书颁发机构它们自己创建的。图 1-5 和 1-6 展示了证书链是怎么被创建和使用的。图 1-5 展示根证书颁发机构怎么创建它们自己的证书和创建一个证书给二级认证机构。 <br>
+<strong>图 1-5 为根颁发机构和二级认证机构创建证书</strong></p>
+
+<h1 id="httpsdeveloperapplecomlibraryprereleasecontentdocumentationsecurityconceptualcryptoservicesartkeys_in_cert_chain_2xpng"><img src="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/keys_in_cert_chain_2x.png" alt="" title=""></h1>
+
+<p><br></p>
+
+<p>图 1-6 展示二级认证机构怎么为最后的用户创建一个证书和最后的用户怎么使用它去签署文档。 <br>
+<strong>图 1-6 为最后的用户创建一个证书并用它去签署文档</strong></p>
+
+<h1 id="httpsdeveloperapplecomlibraryprereleasecontentdocumentationsecurityconceptualcryptoservicesartkeys_in_cert_chain2_2xpng"><img src="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/Art/keys_in_cert_chain2_2x.png" alt="" title=""></h1>
+
+<p><br></p>
 <!-- content end -->
 </div>
 <br>
