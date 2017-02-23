@@ -44,7 +44,34 @@
 接下来这部分讲解这些技术。
 
 ###**钥匙串服务**
-`钥匙串服务API(Keychain ServiceS API)`通常用于把密钥，密码，证书和别的秘密存储在一个叫钥匙串的特殊的加密文件中。你应用总是把密码和其他用于授权访问安全网站的短片段数据(例如`缓存(cookies)`)存储在钥匙串，否则如果被一个未授权的人获得对用户的电脑，移动设备或者备份的访问权可能数据会被破解。
+`钥匙串服务API(Keychain ServiceS API)`通常用于把密钥，密码，证书和别的秘密存储在一个叫钥匙串的特殊的加密文件中。你应用总是把密码和其他用于授权访问安全网站的短片段数据(例如`缓存(cookies)`)存储在钥匙串，否则如果被一个未授权的人获得对用户的电脑，移动设备或者备份的访问权可能数据会被破解。  
+尽管通常用于存储密码和密钥，但是钥匙串也能存储一些小数量的任意数据。这个钥匙串的进一步讲解在`管理密钥，证书和密码`([Managing Keys,Certificates,and Password](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/KeyManagementAPIs/KeyManagementAPIs.html#//apple_ref/doc/uid/TP40011172-CH11-SW1))。  
+`OS X`有一个允许用户在钥匙串存储和阅读的应用，叫做`钥匙串访问(Keychain Access)`。更多信息，请阅读`安全概述`([Security Overview](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976))中的`钥匙串访问`([Keychain Access](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/EndUserSecurityFeatures/EndUserSecurityFeatures.html#//apple_ref/doc/uid/TP30000976-CH204-CHDIFGGC))。  
+
+###**加密消息语法服务**
+`加密消息语法服务(Cryptographic Message Syntax Services)`程序接口允许你对`S/MIME`消息加密或者添加数字签名。(`S/MIME`是一种加密和签名消息的标准，通常用于邮件。)当对存储转发应用程序，例如邮件的数据签名和加密时它是一个好的API。更详细的请阅读`加密消息语法服务参考`([Cryptographic Message Syntax Services Reference](https://developer.apple.com/reference/security/cryptographic_message_syntax_services))。  
+
+###**证书，密钥和信任服务**
+`证书，密钥和信任服务(Certificate,Key,and Trust Services)`API提供信任认证和对解密的支撑函数。更详细的特征讲解在`管理密钥，证书和密码`([Managing Keys,Certificates,and Password](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/KeyManagementAPIs/KeyManagementAPIs.html#//apple_ref/doc/uid/TP40011172-CH11-SW1))。
+在`iOS`这个API也提供基础的加密，详细信息请阅读`iOS中的加密`([Encryption in iOS](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW14))。  
+
+###**通用加密**
+在`OS X` 10.5版本及之后的版本和`iOS` 5.0版本及之后的版本，通用加密提供了由底层级别的C支撑的加密和解密。通用加密不像安全转换一样直截了当，但提供更广泛的功能，包括额外的散列方案，加密模式等等。  
+更多的信息，请查看`CommonCrypto`的手册页。  
+
+##OS X的特定加密技术
+作为对钥匙串服务和加密消息语法服务的补充，`OS X`提供了额外的API用于实现加密：  
+
+* `安全转换(Security Transforms)API`——一个`核心框架级别(Core-Foundation-level)`的API提供对于签名和验证，对称加密，以及Base64编码和解码的支持。  
+* `通用加密(Common Crypto)`——一个C级别的API可以执行大多数对称加密和解密的任务。  
+* `CDSA/CSSM`——遗弃的API应该仅仅用于执行其余两个API不支持的任务，例如非对称加密。  
+
+在接下来的内容去了解这些API。  
+
+###**安全转换**
+在`OS X`10.7及以后的版本，安全转换API对于执行加密任务提供高效和易使用的支持。安全转换在`OS X`被推荐用于执行对称加密和解密，非对称签名和验证，以及Base64编码和解码。  
+基于数据流编程的概念，安全转换API让你可以透明的使用`大中央分发(Grand Central Dispatch)`构建相互转换的图表，以便在多个CPU之间有效的安排生成的工作。当`CFDataRef` (或者 `NSData`) 对象通过对象图，每个单独转换的回调对数据操作，然后把它传递到转换的输出，该输出可以连接到另一个转换对象的输入，等等。  
+这个转换API也提供了一个文件读取器转换(基于[CFReadStreamRef](https://developer.apple.com/reference/corefoundation/cfreadstreamref)或者[NSInputStream](https://developer.apple.com/reference/foundation/nsinputstream)对象)可以链接到其他转换的输入。  
 
 <!-- markdown end -->
 </div>
@@ -79,7 +106,41 @@
 
 <h3 id=""><strong>钥匙串服务</strong></h3>
 
-<p><code>钥匙串服务API(Keychain ServiceS API)</code>通常用于把密钥，密码，证书和别的秘密存储在一个叫钥匙串的特殊的加密文件中。你应用总是把密码和其他用于授权访问安全网站的短片段数据(例如<code>缓存(cookies)</code>)存储在钥匙串，否则如果被一个未授权的人获得对用户的电脑，移动设备或者备份的访问权可能数据会被破解。</p>
+<p><code>钥匙串服务API(Keychain ServiceS API)</code>通常用于把密钥，密码，证书和别的秘密存储在一个叫钥匙串的特殊的加密文件中。你应用总是把密码和其他用于授权访问安全网站的短片段数据(例如<code>缓存(cookies)</code>)存储在钥匙串，否则如果被一个未授权的人获得对用户的电脑，移动设备或者备份的访问权可能数据会被破解。 <br>
+尽管通常用于存储密码和密钥，但是钥匙串也能存储一些小数量的任意数据。这个钥匙串的进一步讲解在<code>管理密钥，证书和密码</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/KeyManagementAPIs/KeyManagementAPIs.html#//apple_ref/doc/uid/TP40011172-CH11-SW1">Managing Keys,Certificates,and Password</a>)。 <br>
+<code>OS X</code>有一个允许用户在钥匙串存储和阅读的应用，叫做<code>钥匙串访问(Keychain Access)</code>。更多信息，请阅读<code>安全概述</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976">Security Overview</a>)中的<code>钥匙串访问</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/EndUserSecurityFeatures/EndUserSecurityFeatures.html#//apple_ref/doc/uid/TP30000976-CH204-CHDIFGGC">Keychain Access</a>)。  </p>
+
+<h3 id=""><strong>加密消息语法服务</strong></h3>
+
+<p><code>加密消息语法服务(Cryptographic Message Syntax Services)</code>程序接口允许你对<code>S/MIME</code>消息加密或者添加数字签名。(<code>S/MIME</code>是一种加密和签名消息的标准，通常用于邮件。)当对存储转发应用程序，例如邮件的数据签名和加密时它是一个好的API。更详细的请阅读<code>加密消息语法服务参考</code>(<a href="https://developer.apple.com/reference/security/cryptographic_message_syntax_services">Cryptographic Message Syntax Services Reference</a>)。  </p>
+
+<h3 id=""><strong>证书，密钥和信任服务</strong></h3>
+
+<p><code>证书，密钥和信任服务(Certificate,Key,and Trust Services)</code>API提供信任认证和对解密的支撑函数。更详细的特征讲解在<code>管理密钥，证书和密码</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/KeyManagementAPIs/KeyManagementAPIs.html#//apple_ref/doc/uid/TP40011172-CH11-SW1">Managing Keys,Certificates,and Password</a>)。
+在<code>iOS</code>这个API也提供基础的加密，详细信息请阅读<code>iOS中的加密</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW14">Encryption in iOS</a>)。  </p>
+
+<h3 id=""><strong>通用加密</strong></h3>
+
+<p>在<code>OS X</code> 10.5版本及之后的版本和<code>iOS</code> 5.0版本及之后的版本，通用加密提供了由底层级别的C支撑的加密和解密。通用加密不像安全转换一样直截了当，但提供更广泛的功能，包括额外的散列方案，加密模式等等。 <br>
+更多的信息，请查看<code>CommonCrypto</code>的手册页。  </p>
+
+<h2 id="osx">OS X的特定加密技术</h2>
+
+<p>作为对钥匙串服务和加密消息语法服务的补充，<code>OS X</code>提供了额外的API用于实现加密：  </p>
+
+<ul>
+<li><code>安全转换(Security Transforms)API</code>——一个<code>核心框架级别(Core-Foundation-level)</code>的API提供对于签名和验证，对称加密，以及Base64编码和解码的支持。  </li>
+<li><code>通用加密(Common Crypto)</code>——一个C级别的API可以执行大多数对称加密和解密的任务。  </li>
+<li><code>CDSA/CSSM</code>——遗弃的API应该仅仅用于执行其余两个API不支持的任务，例如非对称加密。  </li>
+</ul>
+
+<p>在接下来的内容去了解这些API。  </p>
+
+<h3 id=""><strong>安全转换</strong></h3>
+
+<p>在<code>OS X</code>10.7及以后的版本，安全转换API对于执行加密任务提供高效和易使用的支持。安全转换在<code>OS X</code>被推荐用于执行对称加密和解密，非对称签名和验证，以及Base64编码和解码。 <br>
+基于数据流编程的概念，安全转换API让你可以透明的使用<code>大中央分发(Grand Central Dispatch)</code>构建相互转换的图表，以便在多个CPU之间有效的安排生成的工作。当<code>CFDataRef</code> (或者 <code>NSData</code>) 对象通过对象图，每个单独转换的回调对数据操作，然后把它传递到转换的输出，该输出可以连接到另一个转换对象的输入，等等。 <br>
+这个转换API也提供了一个文件读取器转换(基于<a href="https://developer.apple.com/reference/corefoundation/cfreadstreamref">CFReadStreamRef</a>或者<a href="https://developer.apple.com/reference/foundation/nsinputstream">NSInputStream</a>对象)可以链接到其他转换的输入。  </p>
 <!-- content end -->
 </div>
 <br>
