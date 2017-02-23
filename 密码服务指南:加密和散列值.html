@@ -88,6 +88,23 @@ CDSA是被`开源组织`([Open Group](http://www.opengroup.org/security/cdsa.htm
 
 如果这些API不是你需要的，你仍要在`OS X`中使用CDSA，请去`http://bugreport.apple.com/`提交你的问题以请求你需要的附加功能。`CDSA概述`([CDSA Overview](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CDSA/CDSA.html#//apple_ref/doc/uid/TP40011172-CH4-SW1))。
 
+###**OpenSSL**
+尽管OpenSSL通常使用在开源社区，但是OpenSSL没有提供版本到版本的稳定的API。基于这个原因，尽管`OS X`提供了OpenSSL包，但是在`OS X`中已弃用，OpenSSL从来没有在`iOS`提供相关的。在`OS X`为应用使用OpenSSL包是强烈反对的。  
+如果你的应用需要 OpenSSL，则你自己需要编译OpenSSL到你的应用并且静态链接一个OpenSSL的已知版本到你的应用。这样是在`OS X `和`iOS`都可能使用OpenSSL 。但是，除非你要尝试对资源和已存在的开源工程保持兼容，你一般要使用不同的API。  
+通用加密和安全转换是对于一般加密的推荐备选方案。`CFNetwork`和安全传输是对于安全通讯的推荐备选方案。  
+
+
+##iOS中的加密
+在`iOS`中除了提供用于编码和解码的支持函数以外，证书、密钥和信任服务也还使用下面的`SecKey`函数提供对数据块的基本加密、解密、签名和验证：
+
+* [SecKeyEncrypt](https://developer.apple.com/reference/security/1617956-seckeyencrypt)——使用指定密钥加密数据块。
+* [SecKeyDecrypt](https://developer.apple.com/reference/security/1617894-seckeydecrypt)——使用指定密钥解密数据块。
+* [SecKeyRawSign](https://developer.apple.com/reference/security/1618025-seckeyrawsign)——使用指定密钥签名数据块。  
+* [SecKeyRawVerify](https://developer.apple.com/reference/security/1617884-seckeyrawverify)——用数据块和指定密钥去验证签名。  
+
+阅读`证书、密钥和信任服务编程指南`([Certificate,Key,and Trust Services Programming Guide](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/CertKeyTrustProgGuide/index.html#//apple_ref/doc/uid/TP40001358))你能发现`iOS`上在证书、密钥和信任服务任务中怎么使用这些函数的例子。  
+更多详细内容，请看`证书、密钥和信任服务参考`([Certificate,Key,and Trust Services Reference](https://developer.apple.com/reference/security/certificate_key_and_trust_services))。
+
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
@@ -176,6 +193,26 @@ CDSA是被`开源组织`([Open Group](http://www.opengroup.org/security/cdsa.htm
 </ul>
 
 <p>如果这些API不是你需要的，你仍要在<code>OS X</code>中使用CDSA，请去<code>http://bugreport.apple.com/</code>提交你的问题以请求你需要的附加功能。<code>CDSA概述</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CDSA/CDSA.html#//apple_ref/doc/uid/TP40011172-CH4-SW1">CDSA Overview</a>)。</p>
+
+<h3 id="openssl"><strong>OpenSSL</strong></h3>
+
+<p>尽管OpenSSL通常使用在开源社区，但是OpenSSL没有提供版本到版本的稳定的API。基于这个原因，尽管<code>OS X</code>提供了OpenSSL包，但是在<code>OS X</code>中已弃用，OpenSSL从来没有在<code>iOS</code>提供相关的。在<code>OS X</code>为应用使用OpenSSL包是强烈反对的。 <br>
+如果你的应用需要 OpenSSL，则你自己需要编译OpenSSL到你的应用并且静态链接一个OpenSSL的已知版本到你的应用。这样是在<code>OS X</code>和<code>iOS</code>都可能使用OpenSSL 。但是，除非你要尝试对资源和已存在的开源工程保持兼容，你一般要使用不同的API。 <br>
+通用加密和安全转换是对于一般加密的推荐备选方案。<code>CFNetwork</code>和安全传输是对于安全通讯的推荐备选方案。  </p>
+
+<h2 id="ios">iOS中的加密</h2>
+
+<p>在<code>iOS</code>中除了提供用于编码和解码的支持函数以外，证书、密钥和信任服务也还使用下面的<code>SecKey</code>函数提供对数据块的基本加密、解密、签名和验证：</p>
+
+<ul>
+<li><a href="https://developer.apple.com/reference/security/1617956-seckeyencrypt">SecKeyEncrypt</a>——使用指定密钥加密数据块。</li>
+<li><a href="https://developer.apple.com/reference/security/1617894-seckeydecrypt">SecKeyDecrypt</a>——使用指定密钥解密数据块。</li>
+<li><a href="https://developer.apple.com/reference/security/1618025-seckeyrawsign">SecKeyRawSign</a>——使用指定密钥签名数据块。  </li>
+<li><a href="https://developer.apple.com/reference/security/1617884-seckeyrawverify">SecKeyRawVerify</a>——用数据块和指定密钥去验证签名。  </li>
+</ul>
+
+<p>阅读<code>证书、密钥和信任服务编程指南</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/CertKeyTrustProgGuide/index.html#//apple_ref/doc/uid/TP40001358">Certificate,Key,and Trust Services Programming Guide</a>)你能发现<code>iOS</code>上在证书、密钥和信任服务任务中怎么使用这些函数的例子。 <br>
+更多详细内容，请看<code>证书、密钥和信任服务参考</code>(<a href="https://developer.apple.com/reference/security/certificate_key_and_trust_services">Certificate,Key,and Trust Services Reference</a>)。</p>
 <!-- content end -->
 </div>
 <br>
