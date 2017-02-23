@@ -72,6 +72,21 @@
 在`OS X`10.7及以后的版本，安全转换API对于执行加密任务提供高效和易使用的支持。安全转换在`OS X`被推荐用于执行对称加密和解密，非对称签名和验证，以及Base64编码和解码。  
 基于数据流编程的概念，安全转换API让你可以透明的使用`大中央分发(Grand Central Dispatch)`构建相互转换的图表，以便在多个CPU之间有效的安排生成的工作。当`CFDataRef` (或者 `NSData`) 对象通过对象图，每个单独转换的回调对数据操作，然后把它传递到转换的输出，该输出可以连接到另一个转换对象的输入，等等。  
 这个转换API也提供了一个文件读取器转换(基于[CFReadStreamRef](https://developer.apple.com/reference/corefoundation/cfreadstreamref)或者[NSInputStream](https://developer.apple.com/reference/foundation/nsinputstream)对象)可以链接到其他转换的输入。  
+使用内置转换，安全转换API运行你阅读文件，执行对称加密和解密，执行非对称签名和验证，以及执行Base64编码。安全转换API也提供对于创建一个对数据执行别的操作的转换器的支持。例如，你可能要创建一个字节在加密之前交换数据的转换器或者一个加密数据为了传输去编码的转换器。  
+更多信息，请阅读`安全转换编程指南`[Security Transforms Programming Guide](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/SecTransformPG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010801)和`安全转换参考(Security Transforms Reference)`。
+
+###**CDSA/CSSM**
+> `CDSA(包括CSSM)`被弃用不会用于新的开发。在`iOS`上不可用。
+
+CDSA是被`开源组织`([Open Group](http://www.opengroup.org/security/cdsa.htm))作为一种技术标准采用的开源安全架构。苹果公司已经开发了CDSA的开源实现，作为达尔文的一部分在苹果的开源网站。 此API提供了广泛的安全服务，包括细粒度的访问权限，用户身份验证，加密和安全数据存储。  
+尽管CDSA有它自己的标准编程接口，但它是复杂的并且不符合苹果的编程约定。因此，在`OS X`10.7版本已弃用而且在`iOS`没有用。幸运的是，OS X 和 iOS有它们自己的高级别的安全API，能抽象出很多复杂性。  
+可能的话，你应该使用下面的其中一个直接代替CDSA使用：
+
+* 用于认证的安全Objective-C API(在OS X)。详细信息请阅读`安全概述`([Security Overview](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976)) 。  
+* 用于对称加密和解密，非对称签名和验证，和其他在OS X 10.7及以后的版本中支持的任务的安全传输API。详细信息请阅读`安全传输`([Security Transforms](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW2))。  
+* 用于一般加密，密钥管理，和其他任务的证书，密钥和信任服务API。详细信息请阅读`iOS中的加密`([Encryption in iOS](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW14))。
+
+如果这些API不是你需要的，你仍要在`OS X`中使用CDSA，请去`http://bugreport.apple.com/`提交你的问题以请求你需要的附加功能。`CDSA概述`([CDSA Overview](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CDSA/CDSA.html#//apple_ref/doc/uid/TP40011172-CH4-SW1))。
 
 <!-- markdown end -->
 </div>
@@ -140,7 +155,27 @@
 
 <p>在<code>OS X</code>10.7及以后的版本，安全转换API对于执行加密任务提供高效和易使用的支持。安全转换在<code>OS X</code>被推荐用于执行对称加密和解密，非对称签名和验证，以及Base64编码和解码。 <br>
 基于数据流编程的概念，安全转换API让你可以透明的使用<code>大中央分发(Grand Central Dispatch)</code>构建相互转换的图表，以便在多个CPU之间有效的安排生成的工作。当<code>CFDataRef</code> (或者 <code>NSData</code>) 对象通过对象图，每个单独转换的回调对数据操作，然后把它传递到转换的输出，该输出可以连接到另一个转换对象的输入，等等。 <br>
-这个转换API也提供了一个文件读取器转换(基于<a href="https://developer.apple.com/reference/corefoundation/cfreadstreamref">CFReadStreamRef</a>或者<a href="https://developer.apple.com/reference/foundation/nsinputstream">NSInputStream</a>对象)可以链接到其他转换的输入。  </p>
+这个转换API也提供了一个文件读取器转换(基于<a href="https://developer.apple.com/reference/corefoundation/cfreadstreamref">CFReadStreamRef</a>或者<a href="https://developer.apple.com/reference/foundation/nsinputstream">NSInputStream</a>对象)可以链接到其他转换的输入。 <br>
+使用内置转换，安全转换API运行你阅读文件，执行对称加密和解密，执行非对称签名和验证，以及执行Base64编码。安全转换API也提供对于创建一个对数据执行别的操作的转换器的支持。例如，你可能要创建一个字节在加密之前交换数据的转换器或者一个加密数据为了传输去编码的转换器。 <br>
+更多信息，请阅读<code>安全转换编程指南</code><a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/SecTransformPG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010801">Security Transforms Programming Guide</a>和<code>安全转换参考(Security Transforms Reference)</code>。</p>
+
+<h3 id="cdsacssm"><strong>CDSA/CSSM</strong></h3>
+
+<blockquote>
+  <p><code>CDSA(包括CSSM)</code>被弃用不会用于新的开发。在<code>iOS</code>上不可用。</p>
+</blockquote>
+
+<p>CDSA是被<code>开源组织</code>(<a href="http://www.opengroup.org/security/cdsa.htm">Open Group</a>)作为一种技术标准采用的开源安全架构。苹果公司已经开发了CDSA的开源实现，作为达尔文的一部分在苹果的开源网站。 此API提供了广泛的安全服务，包括细粒度的访问权限，用户身份验证，加密和安全数据存储。 <br>
+尽管CDSA有它自己的标准编程接口，但它是复杂的并且不符合苹果的编程约定。因此，在<code>OS X</code>10.7版本已弃用而且在<code>iOS</code>没有用。幸运的是，OS X 和 iOS有它们自己的高级别的安全API，能抽象出很多复杂性。 <br>
+可能的话，你应该使用下面的其中一个直接代替CDSA使用：</p>
+
+<ul>
+<li>用于认证的安全Objective-C API(在OS X)。详细信息请阅读<code>安全概述</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976">Security Overview</a>) 。  </li>
+<li>用于对称加密和解密，非对称签名和验证，和其他在OS X 10.7及以后的版本中支持的任务的安全传输API。详细信息请阅读<code>安全传输</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW2">Security Transforms</a>)。  </li>
+<li>用于一般加密，密钥管理，和其他任务的证书，密钥和信任服务API。详细信息请阅读<code>iOS中的加密</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW14">Encryption in iOS</a>)。</li>
+</ul>
+
+<p>如果这些API不是你需要的，你仍要在<code>OS X</code>中使用CDSA，请去<code>http://bugreport.apple.com/</code>提交你的问题以请求你需要的附加功能。<code>CDSA概述</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CDSA/CDSA.html#//apple_ref/doc/uid/TP40011172-CH4-SW1">CDSA Overview</a>)。</p>
 <!-- content end -->
 </div>
 <br>
