@@ -28,11 +28,23 @@
 #Cryptographic Services Guide
 #[Encrypting and Hashing Data](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html)
 #加密和散列值
-
+***
+最后一次编辑于2017-02-23
+***
 对称和非对称密钥加密方案都能加密数据。非对称加密最广泛的用于发送数据越过信任边界的方案，例如一个人发送了加密邮件给另一个人。它还经常用于在不安全的通讯信道上发送对称会话密钥，这可以使对称加密用于将来的通讯。对称加密最广泛的用于静态数据(例如在你的硬件驱动)和在一群加密网络作为会话密钥的方案。  
 `OS X`和`iOS`提供一堆用于加密和解密的不同的API。本章节讲解这些推荐的API。
 
+##iOS和OS X的通用加密技术
+`iOS`和`OS X`提供了一堆加密技术。这些API在`iOS`和`OS X`都可用：
 
+* `钥匙串服务API(Keychain ServiceS API)`——提供密钥，密码的安全存储等等。
+* `密码消息语法(Cryptographic Message Syntax)`——提供(非流动)对称和非对称的加密和解密。
+* 证书，密钥和信任服务——提供密码支持服务和信任认证。  
+
+接下来这部分讲解这些技术。
+
+###**钥匙串服务**
+`钥匙串服务API(Keychain ServiceS API)`通常用于把密钥，密码，证书和别的秘密存储在一个叫钥匙串的特殊的加密文件中。你应用总是把密码和其他用于授权访问安全网站的短片段数据(例如`缓存(cookies)`)存储在钥匙串，否则如果被一个未授权的人获得对用户的电脑，移动设备或者备份的访问权可能数据会被破解。
 
 <!-- markdown end -->
 </div>
@@ -44,8 +56,30 @@
 
 <h1 id="">加密和散列值</h1>
 
+<hr>
+
+<p>最后一次编辑于2017-02-23</p>
+
+<hr>
+
 <p>对称和非对称密钥加密方案都能加密数据。非对称加密最广泛的用于发送数据越过信任边界的方案，例如一个人发送了加密邮件给另一个人。它还经常用于在不安全的通讯信道上发送对称会话密钥，这可以使对称加密用于将来的通讯。对称加密最广泛的用于静态数据(例如在你的硬件驱动)和在一群加密网络作为会话密钥的方案。 <br>
 <code>OS X</code>和<code>iOS</code>提供一堆用于加密和解密的不同的API。本章节讲解这些推荐的API。</p>
+
+<h2 id="iososx">iOS和OS X的通用加密技术</h2>
+
+<p><code>iOS</code>和<code>OS X</code>提供了一堆加密技术。这些API在<code>iOS</code>和<code>OS X</code>都可用：</p>
+
+<ul>
+<li><code>钥匙串服务API(Keychain ServiceS API)</code>——提供密钥，密码的安全存储等等。</li>
+<li><code>密码消息语法(Cryptographic Message Syntax)</code>——提供(非流动)对称和非对称的加密和解密。</li>
+<li>证书，密钥和信任服务——提供密码支持服务和信任认证。  </li>
+</ul>
+
+<p>接下来这部分讲解这些技术。</p>
+
+<h3 id=""><strong>钥匙串服务</strong></h3>
+
+<p><code>钥匙串服务API(Keychain ServiceS API)</code>通常用于把密钥，密码，证书和别的秘密存储在一个叫钥匙串的特殊的加密文件中。你应用总是把密码和其他用于授权访问安全网站的短片段数据(例如<code>缓存(cookies)</code>)存储在钥匙串，否则如果被一个未授权的人获得对用户的电脑，移动设备或者备份的访问权可能数据会被破解。</p>
 <!-- content end -->
 </div>
 <br>
