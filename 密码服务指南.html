@@ -49,12 +49,12 @@ OS X 和 iOS提供的一些密码服务包括：
 
 ###**加密、签名和验证还有数字证书能保护数据免受窥视**
 有两个主要的加密类型：对称加密，是一种使用单个共享密钥对数据加密和解密的方法；和非对称加密，是用一个密钥对数据加密和另一个分离(但是相关)密钥对数据解密。你能使用哈希来检测对数据片段的修改。你可以使用哈希和非对称密钥结合生成一个数字签名，当根据数据证书进行验证时，证明数据片段的来源。数字证书，反过来，通过验证签署证书的的一方的签名进行验证，然后验证该方的证书，直到得到一个你所信任的固定的证书，这个证书被称为`锚点证书(anchor certificate)`。  
-相关章节: `深度密码学概念`([Cryptography Concepts In Depth](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CryptographyConcepts/CryptographyConcepts.html#//apple_ref/doc/uid/TP40011172-CH8-SW1))
+相关章节: [深度密码学概念](http://douhao1333.github.io/密码服务指南:深度密码学概念.html)  ([Cryptography Concepts In Depth](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CryptographyConcepts/CryptographyConcepts.html#//apple_ref/doc/uid/TP40011172-CH8-SW1))
 </br>
 
 ###**OS和iOS提供加密和散列API**
 OS和iOS提供了一些列加密和散列数据的API，包括`钥匙串服务(Keychain Services)`; `密码消息语法服务(Cryptographic Message Syntax Services)`; `证书(Certificate)`, `密钥(Key)`,`和证书服务(Trust Services)`; `通用密码(Common Crypto)`; `安全转换(Security Transforms)`。  
-相关章节: `加密和散列数据`([Encrypting and Hashing Data
+相关章节: [加密和散列数据](http://douhao1333.github.io/密码服务指南:加密和散列值.html)  ([Encrypting and Hashing Data
 ](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW1))
 </br>
 
@@ -86,7 +86,6 @@ OS和iOS提供了一些列加密和散列数据的API，包括`钥匙串服务(K
 
 ##也可以看看
 有关OS X身份验证和授权（基于加密技术构建的）的详细信息，请阅读`身份验证，授权和权限指南`([Authentication, Authorization, and Permissions Guide](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/AuthenticationAndAuthorizationGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011200))。 
-
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
@@ -129,13 +128,13 @@ OS和iOS提供了一些列加密和散列数据的API，包括`钥匙串服务(K
 <h3 id=""><strong>加密、签名和验证还有数字证书能保护数据免受窥视</strong></h3>
 
 <p>有两个主要的加密类型：对称加密，是一种使用单个共享密钥对数据加密和解密的方法；和非对称加密，是用一个密钥对数据加密和另一个分离(但是相关)密钥对数据解密。你能使用哈希来检测对数据片段的修改。你可以使用哈希和非对称密钥结合生成一个数字签名，当根据数据证书进行验证时，证明数据片段的来源。数字证书，反过来，通过验证签署证书的的一方的签名进行验证，然后验证该方的证书，直到得到一个你所信任的固定的证书，这个证书被称为<code>锚点证书(anchor certificate)</code>。 <br>
-相关章节: <code>深度密码学概念</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CryptographyConcepts/CryptographyConcepts.html#//apple_ref/doc/uid/TP40011172-CH8-SW1">Cryptography Concepts In Depth</a>)
+相关章节: <a href="http://douhao1333.github.io/密码服务指南:深度密码学概念.html">深度密码学概念</a>  (<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/CryptographyConcepts/CryptographyConcepts.html#//apple_ref/doc/uid/TP40011172-CH8-SW1">Cryptography Concepts In Depth</a>)
 <br></p>
 
 <h3 id="osiosapi"><strong>OS和iOS提供加密和散列API</strong></h3>
 
 <p>OS和iOS提供了一些列加密和散列数据的API，包括<code>钥匙串服务(Keychain Services)</code>; <code>密码消息语法服务(Cryptographic Message Syntax Services)</code>; <code>证书(Certificate)</code>, <code>密钥(Key)</code>,<code>和证书服务(Trust Services)</code>; <code>通用密码(Common Crypto)</code>; <code>安全转换(Security Transforms)</code>。 <br>
-相关章节: <code>加密和散列数据</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW1">Encrypting and Hashing Data
+相关章节: <a href="http://douhao1333.github.io/密码服务指南:加密和散列值.html">加密和散列数据</a>  (<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/GeneralPurposeCrypto/GeneralPurposeCrypto.html#//apple_ref/doc/uid/TP40011172-CH9-SW1">Encrypting and Hashing Data
 </a>)
 <br></p>
 
