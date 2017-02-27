@@ -40,7 +40,7 @@
 * 钥匙串服务
 
 ##证书、密钥和信任服务
-证书、密钥和信任服务在iOS和 OS X中用一个C API去管理证书、公钥和私钥、对称密钥和信任政策。你可以在你的应用中使用这些服务：
+`证书、密钥和信任服务`在iOS和 OS X中用一个C API去管理证书、公钥和私钥、对称密钥和信任政策。你可以在你的应用中使用这些服务：
 
 * 创建证书和非对称密钥
 * 把证书和密钥添加到钥匙串，从钥匙串移除，和使用密钥去加密和解密数据
@@ -59,20 +59,20 @@
 
 证书、密钥和信任服务在证书上的操作符合X.509 ITU标准，操作包括使用钥匙串去存储和检索证书和密钥和使用苹果公司提供的信任政策。  
 因为证书使用的是SSL和TLS认证，安全传输API包括在安全连接时用于管理用户证书和根证书的很多函数。  
-在OS X用户界面显示证书的内容，你可以使用在安全Objective-C API 的SFCertificatePanel和SFCertificateView类。此外，SFCertificatePanel类显示信任决策和让用户编辑信任决策。
+在OS X用户界面显示证书的内容，你可以使用在安全Objective-C API 的`SFCertificatePanel`和`SFCertificateView`类。此外，`SFCertificatePanel`类显示信任决策和让用户编辑信任决策。
 
 
 ###**钥匙串服务**
 在OS X和iOS中，钥匙串服务允许你去创建钥匙串、添加、删除和编辑钥匙串项，并且仅仅在OS X中管理钥匙串的集合。在多数情况，钥匙串感知的应用不能对钥匙串做任何的管理仅仅只能调用一些存储和检索密码的功能。  
 默认，iOS的数据备份是以明文存储，例外的是密码和其他秘钥串在备份中保持加密，使用钥匙串去存储密码和其他数据(如缓存)然后用于访问安全网址是如此重要的。否则，如果未认证的人获得对备份数据的访问那这些数据可能被破解。  
-阅读钥匙串服务编程指南(Keychain Services Programming Guide)和钥匙串服务参考(Keychain Services Reference)去开始使用钥匙串服务。  
-在OS X中，钥匙串访问(Keychain Access)应用提供了钥匙串的用户界面。更多关于该应用的信息请阅读钥匙串访问(Keychain Access)和安全概述(Security Overview)。
+阅读`钥匙串服务编程指南`([Keychain Services Programming Guide](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/keychainServConcepts/01introduction/introduction.html#//apple_ref/doc/uid/TP30000897))和`钥匙串服务参考`([Keychain Services Reference](https://developer.apple.com/reference/security/keychain_services))去开始使用钥匙串服务。  
+在OS X中，钥匙串访问(Keychain Access)应用提供了钥匙串的用户界面。更多关于该应用的信息请阅读`钥匙串访问`([Keychain Access](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/EndUserSecurityFeatures/EndUserSecurityFeatures.html#//apple_ref/doc/uid/TP30000976-CH204-CHDIFGGC))和`安全概述`([Security Overview](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976))。
   
 
 ###**学习更多**
-关于钥匙串服务存储和检索秘密和证书的更多信息，请阅读钥匙串服务编程指南(Keychain Services Programming Guide)和钥匙串服务参考(Keychain Services Reference)。  
-关于安全传输的更多信息，请阅读安全传输(Security Transport)。
-关于证书用户界面API，请阅读在安全概述(Security Overview)中的安全Objective-C API。
+关于钥匙串服务存储和检索秘密和证书的更多信息，请阅读`钥匙串服务编程指南`([Keychain Services Programming Guide](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/keychainServConcepts/01introduction/introduction.html#//apple_ref/doc/uid/TP30000897))和`钥匙串服务参考`([Keychain Services Reference](https://developer.apple.com/reference/security/keychain_services))。    
+关于安全传输的更多信息，请阅读`安全传输`([Security Transport](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/SecureNetworkCommunicationAPIs/SecureNetworkCommunicationAPIs.html#//apple_ref/doc/uid/TP40011172-CH13-CHDHDIBB))。
+关于证书用户界面API，请阅读在`安全概述`([Security Overview](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976))中的安全Objective-C API。
 
 <!-- markdown end -->
 </div>
@@ -102,7 +102,7 @@
 
 <h2 id="">证书、密钥和信任服务</h2>
 
-<p>证书、密钥和信任服务在iOS和 OS X中用一个C API去管理证书、公钥和私钥、对称密钥和信任政策。你可以在你的应用中使用这些服务：</p>
+<p><code>证书、密钥和信任服务</code>在iOS和 OS X中用一个C API去管理证书、公钥和私钥、对称密钥和信任政策。你可以在你的应用中使用这些服务：</p>
 
 <ul>
 <li>创建证书和非对称密钥</li>
@@ -125,20 +125,20 @@
 
 <p>证书、密钥和信任服务在证书上的操作符合X.509 ITU标准，操作包括使用钥匙串去存储和检索证书和密钥和使用苹果公司提供的信任政策。 <br>
 因为证书使用的是SSL和TLS认证，安全传输API包括在安全连接时用于管理用户证书和根证书的很多函数。 <br>
-在OS X用户界面显示证书的内容，你可以使用在安全Objective-C API 的SFCertificatePanel和SFCertificateView类。此外，SFCertificatePanel类显示信任决策和让用户编辑信任决策。</p>
+在OS X用户界面显示证书的内容，你可以使用在安全Objective-C API 的<code>SFCertificatePanel</code>和<code>SFCertificateView</code>类。此外，<code>SFCertificatePanel</code>类显示信任决策和让用户编辑信任决策。</p>
 
 <h3 id=""><strong>钥匙串服务</strong></h3>
 
 <p>在OS X和iOS中，钥匙串服务允许你去创建钥匙串、添加、删除和编辑钥匙串项，并且仅仅在OS X中管理钥匙串的集合。在多数情况，钥匙串感知的应用不能对钥匙串做任何的管理仅仅只能调用一些存储和检索密码的功能。 <br>
 默认，iOS的数据备份是以明文存储，例外的是密码和其他秘钥串在备份中保持加密，使用钥匙串去存储密码和其他数据(如缓存)然后用于访问安全网址是如此重要的。否则，如果未认证的人获得对备份数据的访问那这些数据可能被破解。 <br>
-阅读钥匙串服务编程指南(Keychain Services Programming Guide)和钥匙串服务参考(Keychain Services Reference)去开始使用钥匙串服务。 <br>
-在OS X中，钥匙串访问(Keychain Access)应用提供了钥匙串的用户界面。更多关于该应用的信息请阅读钥匙串访问(Keychain Access)和安全概述(Security Overview)。</p>
+阅读<code>钥匙串服务编程指南</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/keychainServConcepts/01introduction/introduction.html#//apple_ref/doc/uid/TP30000897">Keychain Services Programming Guide</a>)和<code>钥匙串服务参考</code>(<a href="https://developer.apple.com/reference/security/keychain_services">Keychain Services Reference</a>)去开始使用钥匙串服务。 <br>
+在OS X中，钥匙串访问(Keychain Access)应用提供了钥匙串的用户界面。更多关于该应用的信息请阅读<code>钥匙串访问</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/EndUserSecurityFeatures/EndUserSecurityFeatures.html#//apple_ref/doc/uid/TP30000976-CH204-CHDIFGGC">Keychain Access</a>)和<code>安全概述</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976">Security Overview</a>)。</p>
 
 <h3 id=""><strong>学习更多</strong></h3>
 
-<p>关于钥匙串服务存储和检索秘密和证书的更多信息，请阅读钥匙串服务编程指南(Keychain Services Programming Guide)和钥匙串服务参考(Keychain Services Reference)。 <br>
-关于安全传输的更多信息，请阅读安全传输(Security Transport)。
-关于证书用户界面API，请阅读在安全概述(Security Overview)中的安全Objective-C API。</p>
+<p>关于钥匙串服务存储和检索秘密和证书的更多信息，请阅读<code>钥匙串服务编程指南</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/keychainServConcepts/01introduction/introduction.html#//apple_ref/doc/uid/TP30000897">Keychain Services Programming Guide</a>)和<code>钥匙串服务参考</code>(<a href="https://developer.apple.com/reference/security/keychain_services">Keychain Services Reference</a>)。 <br>
+关于安全传输的更多信息，请阅读<code>安全传输</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/SecureNetworkCommunicationAPIs/SecureNetworkCommunicationAPIs.html#//apple_ref/doc/uid/TP40011172-CH13-CHDHDIBB">Security Transport</a>)。
+关于证书用户界面API，请阅读在<code>安全概述</code>(<a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/Security_Overview/Introduction/Introduction.html#//apple_ref/doc/uid/TP30000976">Security Overview</a>)中的安全Objective-C API。</p>
 <!-- content end -->
 </div>
 <br>
