@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Keywords" content="blog"/>
+    <meta name="Description" content="blog"/>
+    <title>Simple</title>
+    <link rel="shortcut icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+    	<ul id="pages">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/tags">tags</a></li>
+            <li><a href="/#/archive">archive</a></li>
+    	</ul>
+    </div>
+	<div class="wrap-header">
+	<h1>
+    <a href="/" id="title"></a>
+	</h1>
+	</div>
+<div id="md" style="display: none;">
+<!-- markdown -->
+#Cryptographic Services Guide
+#[Generating Random Numbers](https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/RandomNumberGenerationAPIs/RandomNumberGenerationAPIs.html)
+#生成随机数
+***
+最后一次编辑于2017-02-27
+***
+加密伪随机数需要很多加密算法。因为伪随机数是由电脑算法生成。它不是真的随机数。但是，该算法不会从序列中识别出来。  
+你生成随机数的方式依靠你在OS X和iOS中写的代码。
+
+
+##在OS X中生成随机数
+在OS X中，你能阅读/dev/random设备文件的字节从而得到加密安全伪随机数。这个文件中的每个字节都是从 0-255的加密随机值。通过连接这些字节，你可以得到任意大小的随机数。  
+例如，如果你需要一个64位整型随机值，你可选写的代码如像这样:  
+
+>`FILE *fp = fopen(“/dev/random”, ”r”);`
+
+>`If (!fp) {  
+   Perror(“randgetter”);  
+   exit(-1);  
+}`
+
+> `uint64_t value = 0;  
+ int I;  
+for (i=0; i<sizeof(value); i++) {  
+   value <<= 8;  
+   value |= fgetc(fp);  
+}`
+
+>`fclose(fp);  `
+
+这个在给定范围去均匀分布值的转换值的任务是留给读者的练习。  
+> **重点**：由rand和random API生成的数值不是加密安全的。在OS X中，给定相同的初始种子值，每次你运行两个函数时都重复生成一个一致的序列值，并且不会生成均匀分布的可能值的集合。  
+
+
+
+##在iOS中生成随机数
+在iOS中，你可以使用随机服务去生成随机数。随机服务，反过来，调用在核心系统层的随机数生成。更多信息请阅读`随机服务指南`([Randomization Services Reference](https://developer.apple.com/reference/security/randomization_services))。
+<!-- markdown end -->
+</div>
+<div class="entry" id="main">
+<!-- content -->
+<h1 id="cryptographicservicesguide">Cryptographic Services Guide</h1>
+
+<h1 id="generatingrandomnumbershttpsdeveloperapplecomlibraryprereleasecontentdocumentationsecurityconceptualcryptoservicesrandomnumbergenerationapisrandomnumbergenerationapishtml"><a href="https://developer.apple.com/library/prerelease/content/documentation/Security/Conceptual/cryptoservices/RandomNumberGenerationAPIs/RandomNumberGenerationAPIs.html">Generating Random Numbers</a></h1>
+
+<h1 id="">生成随机数</h1>
+
+<hr>
+
+<p>最后一次编辑于2017-02-27</p>
+
+<hr>
+
+<p>加密伪随机数需要很多加密算法。因为伪随机数是由电脑算法生成。它不是真的随机数。但是，该算法不会从序列中识别出来。 <br>
+你生成随机数的方式依靠你在OS X和iOS中写的代码。</p>
+
+<h2 id="osx">在OS X中生成随机数</h2>
+
+<p>在OS X中，你能阅读/dev/random设备文件的字节从而得到加密安全伪随机数。这个文件中的每个字节都是从 0-255的加密随机值。通过连接这些字节，你可以得到任意大小的随机数。 <br>
+例如，如果你需要一个64位整型随机值，你可选写的代码如像这样:  </p>
+
+<blockquote>
+  <p><code>FILE *fp = fopen(“/dev/random”, ”r”);</code></p>
+  
+  <p><code>If (!fp) { <br>
+     Perror(“randgetter”); <br>
+     exit(-1); <br>
+  }</code></p>
+  
+  <p><code>uint64_t value = 0; <br>
+   int I; <br>
+  for (i=0; i&lt;sizeof(value); i++) { <br>
+     value &lt;&lt;= 8; <br>
+     value |= fgetc(fp); <br>
+  }</code></p>
+  
+  <p><code>fclose(fp);</code></p>
+</blockquote>
+
+<p>这个在给定范围去均匀分布值的转换值的任务是留给读者的练习。  </p>
+
+<blockquote>
+  <p><strong>重点</strong>：由rand和random API生成的数值不是加密安全的。在OS X中，给定相同的初始种子值，每次你运行两个函数时都重复生成一个一致的序列值，并且不会生成均匀分布的可能值的集合。  </p>
+</blockquote>
+
+<h2 id="ios">在iOS中生成随机数</h2>
+
+<p>在iOS中，你可以使用随机服务去生成随机数。随机服务，反过来，调用在核心系统层的随机数生成。更多信息请阅读<code>随机服务指南</code>(<a href="https://developer.apple.com/reference/security/randomization_services">Randomization Services Reference</a>)。</p>
+<!-- content end -->
+</div>
+<br>
+<br>
+    <div id="disqus_thread"></div>
+	<div class="footer">
+		<p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
+	</div>
+</div>
+<script src="main.js"></script>
+<script id="content" type="text/mustache">
+    <h1>{{title}}</h1>
+    <div class="tag">
+    {{date}}
+    {{#tags}}
+    <a href="/#/tag/{{name}}">#{{name}}</a>
+    {{/tags}}
+    </div>
+</script>
+<script id="pagesTemplate" type="text/mustache">
+    {{#pages}}
+    <li>
+        <a href="{{path}}">{{title}}</a>
+    </li>
+    {{/pages}}
+</script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "main.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $("#title").html(data.name);
+            var pagesTemplate = Hogan.compile($("#pagesTemplate").html());
+            var pagesHtml = pagesTemplate.render({"pages": data.pages});
+            $("#pages").append(pagesHtml);
+            //path
+            var path = "密码服务指南:生成随机数.html";
+            //path end
+            var now = 0;
+            for (var i = 0; i < data.posts.length; ++i)
+                if (path == data.posts[i].path)
+                    now = i;
+            var post = data.posts[now];
+            var tmp = post.tags.split(" ");
+            var tags = [];
+            for (var i = 0; i < tmp.length; ++i)
+                if (tmp[i].length > 0)
+                    tags.push({"name": tmp[i]});
+            var contentTemplate = Hogan.compile($("#content").html());
+            var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
+            $("#main").prepend(contentHtml);
+            if (data.disqus_shortname.length > 0) {
+                var disqus_shortname = data.disqus_shortname;
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+    });
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ["\\(", "\\)"]], processEscapes: true}});
+</script>
+</body>
+</html>
